@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MovieTableViewCell: UITableViewCell {
   
   let movieImageView: UIImageView = {
     let imageView = UIImageView()
     imageView.backgroundColor = .green
+    imageView.contentMode = .scaleAspectFill
     imageView.translatesAutoresizingMaskIntoConstraints = false
     return imageView
   }()
@@ -20,7 +22,6 @@ class MovieTableViewCell: UITableViewCell {
     let label = UILabel()
     label.text = "Grand Theft Auto V: The Revolutioner"
     label.numberOfLines = 2
-    label.sizeToFit()
     label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
@@ -30,21 +31,27 @@ class MovieTableViewCell: UITableViewCell {
     let label = UILabel()
     label.text = "20 Januari 2020"
     label.numberOfLines = 1
-    label.font = UIFont.italicSystemFont(ofSize: 14)
+    label.font = UIFont.italicSystemFont(ofSize: 12)
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }()
   
   let movieOverviewLabel: UILabel = {
     let label = UILabel()
-    label.text = "Sample overview dlfjdf djfdfdkf djkf dkfd fjdfkdjf djkfdskf dkfdk sjfkd jfkdj fkdjfkdj kfdjkfdkf dkfj dkfjd klfjkd fjkdfkd fkdfkdkf ldjklfdjklf dklfdjJjppgierg dfjdklf d"
     label.numberOfLines = 0
     label.font = UIFont.systemFont(ofSize: 13, weight: .regular)
-    label.adjustsFontSizeToFitWidth = true
-    label.minimumScaleFactor = 0.9
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }()
+  
+  func configureCell(movie: MovieModel) {
+    self.movieTitleLabel.text = movie.title
+    self.movieOverviewLabel.text = movie.overview
+    self.movieDateReleaseLabel.text = Utils.changeDateStringIntoFormattedString(withStringDate: movie.releaseDate)
+    
+    let posterImageUrl = URL(string: "https://image.tmdb.org/t/p/w500/\(movie.posterPath)")
+    self.movieImageView.sd_setImage(with: posterImageUrl, completed: nil)
+  }
 
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -66,15 +73,19 @@ class MovieTableViewCell: UITableViewCell {
     self.movieTitleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 16).isActive = true
     self.movieTitleLabel.leftAnchor.constraint(equalTo: self.movieImageView.rightAnchor, constant: 8).isActive = true
     self.movieTitleLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
+    self.movieTitleLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 16).isActive = true
 
     self.addSubview(self.movieDateReleaseLabel)
-    self.movieDateReleaseLabel.topAnchor.constraint(equalTo: self.movieTitleLabel.bottomAnchor, constant: 4).isActive = true
-    self.movieDateReleaseLabel.leftAnchor.constraint(equalTo: self.movieImageView.rightAnchor, constant: 8).isActive = true
+    self.movieDateReleaseLabel.topAnchor.constraint(equalTo: self.movieTitleLabel.bottomAnchor, constant: 4)
+      .isActive = true
+    self.movieDateReleaseLabel.leftAnchor.constraint(equalTo: self.movieImageView.rightAnchor, constant: 8)
+      .isActive = true
     self.movieDateReleaseLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
     self.movieDateReleaseLabel.heightAnchor.constraint(equalToConstant: 18).isActive = true
 
     self.addSubview(self.movieOverviewLabel)
-    self.movieOverviewLabel.topAnchor.constraint(equalTo: self.movieDateReleaseLabel.bottomAnchor, constant: 4).isActive = true
+    self.movieOverviewLabel.topAnchor.constraint(equalTo: self.movieDateReleaseLabel.bottomAnchor, constant: 4)
+      .isActive = true
     self.movieOverviewLabel.leftAnchor.constraint(equalTo: self.movieImageView.rightAnchor, constant: 8).isActive = true
     self.movieOverviewLabel.bottomAnchor.constraint(lessThanOrEqualTo: self.bottomAnchor, constant: -16).isActive = true
     self.movieOverviewLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true

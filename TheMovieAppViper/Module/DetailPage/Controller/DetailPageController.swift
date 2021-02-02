@@ -10,6 +10,7 @@ import UIKit
 class DetailPageController: UIViewController {
   
   private lazy var detailPageView = DetailPageView(frame: self.view.frame)
+  var movie: MovieModel?
   
   override func viewDidLoad() {
     super.viewDidLoad()

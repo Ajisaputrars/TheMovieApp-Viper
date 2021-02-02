@@ -40,7 +40,7 @@ class DetailPageView: UIView {
   
   let movieOverviewLabel: UILabel = {
     let label = UILabel()
-    label.text = "dfkdjfkd fkdjfkdjfkd kfdjkfj dkfjdkfjdk fjkd jfkdj fkd jfkd kfdj kfdj kfdjk fjdk fjd fjd fjkdj fkdj fkdj kfdj kfj dkfj dklfjkdljfkdjf kdjf kdj fkdj fkdj kfd jkfdj kfjdklfjdklfj dkfjkldfjkdlf kld fkld fkld fkd klfdklf dklf kldf kld fkld fkldfkld fkld fkldjk fld kfd klfjdkl f kldf kldf kldf kldf kld flkd fkld kfld kfdk fdk fkdf kd fkd fkdj fkdf dk fkdlf kdj fkdjf kdjkf djk fdkfkd fkd fkd fkdfdk fjkdfjkdjf"
+    label.text = "dfkdjfkd fkdjfkdjfkd kfdjkfj dkfjdkfjdk fjkd jfkdj fkd jfkd"
     label.numberOfLines = 0
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
@@ -74,14 +74,18 @@ class DetailPageView: UIView {
     self.movieNameLabel.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
     
     self.scrollView.addSubview(self.movieReleaseDateLabel)
-    self.movieReleaseDateLabel.topAnchor.constraint(equalTo: self.movieNameLabel.bottomAnchor, constant: 16).isActive = true
+    self.movieReleaseDateLabel.topAnchor.constraint(equalTo: self.movieNameLabel.bottomAnchor, constant: 16)
+      .isActive = true
     self.movieReleaseDateLabel.leftAnchor.constraint(equalTo: self.scrollView.leftAnchor, constant: 16).isActive = true
-    self.movieReleaseDateLabel.rightAnchor.constraint(equalTo: self.scrollView.rightAnchor, constant: -16).isActive = true
+    self.movieReleaseDateLabel.rightAnchor.constraint(equalTo: self.scrollView.rightAnchor, constant: -16)
+      .isActive = true
     
     self.scrollView.addSubview(self.movieOverviewLabel)
-    self.movieOverviewLabel.topAnchor.constraint(equalTo: self.movieReleaseDateLabel.bottomAnchor, constant: 16).isActive = true
+    self.movieOverviewLabel.topAnchor.constraint(equalTo: self.movieReleaseDateLabel.bottomAnchor, constant: 16)
+      .isActive = true
     self.movieOverviewLabel.leftAnchor.constraint(equalTo: self.scrollView.leftAnchor, constant: 16).isActive = true
-    self.movieOverviewLabel.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor, constant: -16).isActive = true
+    self.movieOverviewLabel.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor, constant: -16)
+      .isActive = true
     self.movieOverviewLabel.rightAnchor.constraint(equalTo: self.scrollView.rightAnchor, constant: -16).isActive = true
     
     movieNameLabel.backgroundColor = .green
@@ -93,6 +97,3 @@ class DetailPageView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
 }
-
-
-

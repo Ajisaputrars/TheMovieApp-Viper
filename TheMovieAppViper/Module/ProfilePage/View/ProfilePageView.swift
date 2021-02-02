@@ -53,7 +53,8 @@ class ProfilePageView: UIView {
     self.profileImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
     
     self.scrollView.addSubview(self.profileNameLabel)
-    self.profileNameLabel.topAnchor.constraint(equalTo: self.profileImageView.bottomAnchor, constant: 16).isActive = true
+    self.profileNameLabel.topAnchor.constraint(equalTo: self.profileImageView.bottomAnchor, constant: 16)
+      .isActive = true
     self.profileNameLabel.leftAnchor.constraint(equalTo: self.scrollView.leftAnchor, constant: 16).isActive = true
     self.profileNameLabel.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor, constant: -16).isActive = true
     self.profileNameLabel.rightAnchor.constraint(equalTo: self.scrollView.rightAnchor, constant: -16).isActive = true

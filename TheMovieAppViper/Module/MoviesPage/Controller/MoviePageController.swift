@@ -9,6 +9,8 @@ import UIKit
 
 class MoviePageController: UIViewController {
   private lazy var moviePageView = MoviePageView(frame: self.view.frame)
+  private var movies: [MovieModel] = []
+  var moviePresenter: MoviePresenter?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -17,25 +19,20 @@ class MoviePageController: UIViewController {
     
     self.moviePageView.movieTableView.delegate = self
     self.moviePageView.movieTableView.dataSource = self
+    self.moviePresenter?.loadingMealDelegate = self
 
-    self.moviePageView.setupLoadingView(isLoading: true)
-    DispatchQueue.global().async {
-      Thread.sleep(forTimeInterval: 2)
-      
-      DispatchQueue.main.async {
-        self.moviePageView.setupLoadingView(isLoading: false)
-      }
-    }
+    self.moviePresenter?.getCategories()
   }
 }
 
 extension MoviePageController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 10
+    return self.movies.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MovieTableViewCell {
+      cell.configureCell(movie: self.movies[indexPath.row])
       return cell
     }
     return UITableViewCell()
@@ -46,6 +43,22 @@ extension MoviePageController: UITableViewDelegate, UITableViewDataSource {
     let controller = DetailPageController()
     controller.hidesBottomBarWhenPushed = true
     self.navigationController?.pushViewController(controller, animated: true)
+  }
+  
+}
+
+extension MoviePageController: LoadingMovieDelegate {
+  func loadingView(isLoading: Bool) {
+    self.moviePageView.setupLoadingView(isLoading: isLoading)
+  }
+  
+  func getErrorMessage(errorMessage: String?) {
+    
+  }
+  
+  func setMovie(movies: [MovieModel]) {
+    self.movies = movies
+    self.moviePageView.movieTableView.reloadData()
   }
   
 }
