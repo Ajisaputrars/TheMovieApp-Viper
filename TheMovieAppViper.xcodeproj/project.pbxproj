@@ -10,6 +10,8 @@
 		4AD09DFADA85E9EE58282656 /* Pods_TheMovieAppViperTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5196DD9F0B22E9F0B73B5AAE /* Pods_TheMovieAppViperTests.framework */; };
 		990C635C9DDDA9BCBC0B7FD7 /* Pods_TheMovieAppViper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97ADCF241F39F569D0FF8E7 /* Pods_TheMovieAppViper.framework */; };
 		D707302F25CB21B2003E7C0D /* DetailMoviePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D707302E25CB21B2003E7C0D /* DetailMoviePresenter.swift */; };
+		D707303725CB29EA003E7C0D /* ApiKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = D707303625CB29EA003E7C0D /* ApiKey.plist */; };
+		D707303C25CB2A31003E7C0D /* MovieDbUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D707303B25CB2A31003E7C0D /* MovieDbUrl.swift */; };
 		D750EA6225C9309700F854A7 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D750EA6125C9309700F854A7 /* RealmSwift */; };
 		D750EA6425C9309700F854A7 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D750EA6325C9309700F854A7 /* Realm */; };
 		D750EA9725C9595300F854A7 /* MovieInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D750EA9625C9595300F854A7 /* MovieInteractor.swift */; };
@@ -74,6 +76,8 @@
 		A538DBBF23F55DA6578EEA0B /* Pods-TheMovieAppViperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieAppViperTests.debug.xcconfig"; path = "Target Support Files/Pods-TheMovieAppViperTests/Pods-TheMovieAppViperTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A97ADCF241F39F569D0FF8E7 /* Pods_TheMovieAppViper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovieAppViper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D707302E25CB21B2003E7C0D /* DetailMoviePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMoviePresenter.swift; sourceTree = "<group>"; };
+		D707303625CB29EA003E7C0D /* ApiKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiKey.plist; sourceTree = "<group>"; };
+		D707303B25CB2A31003E7C0D /* MovieDbUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDbUrl.swift; sourceTree = "<group>"; };
 		D750EA9625C9595300F854A7 /* MovieInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInteractor.swift; sourceTree = "<group>"; };
 		D750EA9B25C9595E00F854A7 /* DetailMovieInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMovieInteractor.swift; sourceTree = "<group>"; };
 		D750EAA025C9596E00F854A7 /* FavoriteMoviesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesInteractor.swift; sourceTree = "<group>"; };
@@ -226,6 +230,7 @@
 			children = (
 				D7D2F8A525C9CCD6004A191E /* Utils.swift */,
 				D750EAE825C9A95100F854A7 /* MovieMapper.swift */,
+				D707303B25CB2A31003E7C0D /* MovieDbUrl.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -452,6 +457,7 @@
 				D769C04A25C4685000655CD5 /* LaunchScreen.storyboard */,
 				D769C04D25C4685000655CD5 /* Info.plist */,
 				D769C04525C4684E00655CD5 /* TheMovieAppViper.xcdatamodeld */,
+				D707303625CB29EA003E7C0D /* ApiKey.plist */,
 			);
 			path = TheMovieAppViper;
 			sourceTree = "<group>";
@@ -604,6 +610,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7EA37F125C7477900D81811 /* .swiftlint.yml in Resources */,
+				D707303725CB29EA003E7C0D /* ApiKey.plist in Resources */,
 				D750EAD025C95E0B00F854A7 /* SampleMovieResponse.json in Resources */,
 				D769C04C25C4685000655CD5 /* LaunchScreen.storyboard in Resources */,
 				D769C04925C4685000655CD5 /* Assets.xcassets in Resources */,
@@ -767,6 +774,7 @@
 				D750EAAE25C95BE100F854A7 /* MovieRepository.swift in Sources */,
 				D769C09425C4879B00655CD5 /* MovieTableViewCell.swift in Sources */,
 				D769C08125C47E7400655CD5 /* MoviePageView.swift in Sources */,
+				D707303C25CB2A31003E7C0D /* MovieDbUrl.swift in Sources */,
 				D7569E1525C871E300CE7819 /* DetailPageView.swift in Sources */,
 				D750EAA125C9596E00F854A7 /* FavoriteMoviesInteractor.swift in Sources */,
 				D7569E0425C810FC00CE7819 /* ProfilePageView.swift in Sources */,

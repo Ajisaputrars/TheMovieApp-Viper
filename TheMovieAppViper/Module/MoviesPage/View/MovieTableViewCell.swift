@@ -12,8 +12,7 @@ class MovieTableViewCell: UITableViewCell {
   
   let movieImageView: UIImageView = {
     let imageView = UIImageView()
-    imageView.backgroundColor = .green
-    imageView.contentMode = .scaleAspectFill
+    imageView.contentMode = .scaleToFill
     imageView.translatesAutoresizingMaskIntoConstraints = false
     return imageView
   }()
@@ -50,6 +49,7 @@ class MovieTableViewCell: UITableViewCell {
     self.movieDateReleaseLabel.text = Utils.changeDateStringIntoFormattedString(withStringDate: movie.releaseDate)
     
     let posterImageUrl = URL(string: "https://image.tmdb.org/t/p/w500/\(movie.posterPath)")
+    movieImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
     self.movieImageView.sd_setImage(with: posterImageUrl, completed: nil)
   }
 

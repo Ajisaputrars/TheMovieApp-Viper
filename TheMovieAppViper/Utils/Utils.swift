@@ -24,4 +24,15 @@ class Utils {
     alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
     controller.present(alertController, animated: true, completion: nil)
   }
+  
+  static func getApiKey() -> String {
+    guard let path = Bundle.main.path(forResource: "ApiKey", ofType: "plist") else {
+      fatalError("Couldn't find file 'API-Info.plist'.")
+    }
+    let plist = NSDictionary(contentsOfFile: path)
+    guard let value = plist?.object(forKey: "apiKey") as? String else {
+      fatalError("Couldn't find key 'API_KEY' in 'API-Info.plist'.")
+    }
+    return value
+  }
 }

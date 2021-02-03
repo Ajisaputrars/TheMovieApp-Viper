@@ -12,7 +12,7 @@ class MainTabBarController: UITabBarController {
   override func viewDidLoad() {
     super.viewDidLoad()
     let appearance = UINavigationBarAppearance()
-    appearance.backgroundColor = .red
+    appearance.backgroundColor = #colorLiteral(red: 0, green: 0.5181589127, blue: 1, alpha: 1)
     appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     
     let moviePageController = MoviePageController()
@@ -39,6 +39,7 @@ class MainTabBarController: UITabBarController {
       tabBar.navigationController?.navigationBar.standardAppearance = appearance
       tabBar.navigationController?.navigationBar.tintColor = .white
       tabBar.navigationController?.navigationBar.prefersLargeTitles = false
+      tabBar.navigationController?.navigationBar.isTranslucent = true
       tabBar.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     

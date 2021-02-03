@@ -50,9 +50,9 @@ class MoviePageView: UIView {
     self.backgroundColor = .white
     
     self.addSubview(self.movieTableView)
-    self.movieTableView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
+    self.movieTableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
     self.movieTableView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor).isActive = true
-    self.movieTableView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor).isActive = true
+    self.movieTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     self.movieTableView.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor).isActive = true
     
     self.addSubview(self.loadingIndicatorView)
