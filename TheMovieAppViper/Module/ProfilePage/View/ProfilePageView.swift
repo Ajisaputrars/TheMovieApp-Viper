@@ -17,9 +17,11 @@ class ProfilePageView: UIView {
   
   let profileImageView: UIImageView = {
     let imageView = UIImageView()
+    imageView.image = UIImage(named: "profile")
     imageView.backgroundColor = .green
     imageView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
     imageView.layer.cornerRadius = 100
+    imageView.clipsToBounds = true
     imageView.translatesAutoresizingMaskIntoConstraints = false
     return imageView
   }()

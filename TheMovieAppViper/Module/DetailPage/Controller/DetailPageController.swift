@@ -8,14 +8,21 @@
 import UIKit
 
 class DetailPageController: UIViewController {
-  
   private lazy var detailPageView = DetailPageView(frame: self.view.frame)
-  var movie: MovieModel?
+  var presenter: DetailMoviePresenter?
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.title = "Detail Movie"
-    self.view = self.detailPageView
+    view = self.detailPageView
+    title = "Detail Movie"
+    
+    presenter?.loadMovieDelegate = self
+    presenter?.loadDetailMovie()
   }
-  
+}
+
+extension DetailPageController: LoadDetailMovieDelegate {
+  func loadMovie(movie: MovieModel) {
+    detailPageView.setupDetailView(withMovieModel: movie)
+  }
 }

@@ -10,6 +10,7 @@ import UIKit
 class MoviePageController: UIViewController {
   private lazy var moviePageView = MoviePageView(frame: self.view.frame)
   private var movies: [MovieModel] = []
+  private var homeRouter = HomeRouter()
   var moviePresenter: MoviePresenter?
   
   override func viewDidLoad() {
@@ -40,9 +41,10 @@ extension MoviePageController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
-    let controller = DetailPageController()
-    controller.hidesBottomBarWhenPushed = true
-    self.navigationController?.pushViewController(controller, animated: true)
+//    let controller = DetailPageController()
+//    controller.hidesBottomBarWhenPushed = true
+//    self.navigationController?.pushViewController(controller, animated: true)
+    homeRouter.goToDetailPage(from: self, withMovieModel: movies[indexPath.row])
   }
   
 }

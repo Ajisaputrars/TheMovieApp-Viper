@@ -29,7 +29,7 @@ class MoviePresenter {
       .store(in: &cancellables)
   }
   
-  func goToDetailPage(from controller: UIViewController, withMovieModel movie: MovieModel?) {
+  func goToDetailPage(from controller: UIViewController, withMovieModel movie: MovieModel) {
     self.router.goToDetailPage(from: controller, withMovieModel: movie)
   }
 }

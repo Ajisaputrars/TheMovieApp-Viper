@@ -22,9 +22,8 @@ class DetailPageView: UIView {
     return imageView
   }()
   
-  let movieNameLabel: UILabel = {
+  let movieTitleLabel: UILabel = {
     let label = UILabel()
-    label.text = "GTA V: The Last Airbender"
     label.textAlignment = .center
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
@@ -32,7 +31,6 @@ class DetailPageView: UIView {
   
   let movieReleaseDateLabel: UILabel = {
     let label = UILabel()
-    label.text = "20 Juni 2020"
     label.textAlignment = .center
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
@@ -40,11 +38,18 @@ class DetailPageView: UIView {
   
   let movieOverviewLabel: UILabel = {
     let label = UILabel()
-    label.text = "dfkdjfkd fkdjfkdjfkd kfdjkfj dkfjdkfjdk fjkd jfkdj fkd jfkd"
     label.numberOfLines = 0
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }()
+  
+  func setupDetailView(withMovieModel movie: MovieModel) {
+    let posterImageUrl = URL(string: "https://image.tmdb.org/t/p/w500/\(movie.posterPath)")
+    movieImageView.sd_setImage(with: posterImageUrl, completed: nil)
+    movieTitleLabel.text = movie.title
+    movieOverviewLabel.text = movie.overview
+    movieReleaseDateLabel.text = Utils.changeDateStringIntoFormattedString(withStringDate: movie.releaseDate)
+  }
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -66,15 +71,15 @@ class DetailPageView: UIView {
     self.movieImageView.widthAnchor.constraint(equalToConstant: 200).isActive = true
     self.movieImageView.heightAnchor.constraint(equalToConstant: 250).isActive = true
     
-    self.scrollView.addSubview(self.movieNameLabel)
-    self.movieNameLabel.topAnchor.constraint(equalTo: self.movieImageView.bottomAnchor, constant: 16).isActive = true
-    self.movieNameLabel.leftAnchor.constraint(equalTo: self.scrollView.leftAnchor, constant: 16).isActive = true
+    self.scrollView.addSubview(self.movieTitleLabel)
+    self.movieTitleLabel.topAnchor.constraint(equalTo: self.movieImageView.bottomAnchor, constant: 16).isActive = true
+    self.movieTitleLabel.leftAnchor.constraint(equalTo: self.scrollView.leftAnchor, constant: 16).isActive = true
 //    self.movieNameLabel.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor, constant: -16).isActive = true
-    self.movieNameLabel.rightAnchor.constraint(equalTo: self.scrollView.rightAnchor, constant: -16).isActive = true
-    self.movieNameLabel.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
+    self.movieTitleLabel.rightAnchor.constraint(equalTo: self.scrollView.rightAnchor, constant: -16).isActive = true
+    self.movieTitleLabel.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
     
     self.scrollView.addSubview(self.movieReleaseDateLabel)
-    self.movieReleaseDateLabel.topAnchor.constraint(equalTo: self.movieNameLabel.bottomAnchor, constant: 16)
+    self.movieReleaseDateLabel.topAnchor.constraint(equalTo: self.movieTitleLabel.bottomAnchor, constant: 16)
       .isActive = true
     self.movieReleaseDateLabel.leftAnchor.constraint(equalTo: self.scrollView.leftAnchor, constant: 16).isActive = true
     self.movieReleaseDateLabel.rightAnchor.constraint(equalTo: self.scrollView.rightAnchor, constant: -16)
@@ -87,10 +92,6 @@ class DetailPageView: UIView {
     self.movieOverviewLabel.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor, constant: -16)
       .isActive = true
     self.movieOverviewLabel.rightAnchor.constraint(equalTo: self.scrollView.rightAnchor, constant: -16).isActive = true
-    
-    movieNameLabel.backgroundColor = .green
-    movieReleaseDateLabel.backgroundColor = .yellow
-    movieOverviewLabel.backgroundColor = .magenta
   }
   
   required init?(coder: NSCoder) {

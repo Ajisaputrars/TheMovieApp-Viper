@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4AD09DFADA85E9EE58282656 /* Pods_TheMovieAppViperTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5196DD9F0B22E9F0B73B5AAE /* Pods_TheMovieAppViperTests.framework */; };
 		990C635C9DDDA9BCBC0B7FD7 /* Pods_TheMovieAppViper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97ADCF241F39F569D0FF8E7 /* Pods_TheMovieAppViper.framework */; };
+		D707302F25CB21B2003E7C0D /* DetailMoviePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D707302E25CB21B2003E7C0D /* DetailMoviePresenter.swift */; };
 		D750EA6225C9309700F854A7 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D750EA6125C9309700F854A7 /* RealmSwift */; };
 		D750EA6425C9309700F854A7 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D750EA6325C9309700F854A7 /* Realm */; };
 		D750EA9725C9595300F854A7 /* MovieInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D750EA9625C9595300F854A7 /* MovieInteractor.swift */; };
@@ -72,6 +73,7 @@
 		95FF50CA587ED810A60D5AE4 /* Pods-TheMovieAppViperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieAppViperTests.release.xcconfig"; path = "Target Support Files/Pods-TheMovieAppViperTests/Pods-TheMovieAppViperTests.release.xcconfig"; sourceTree = "<group>"; };
 		A538DBBF23F55DA6578EEA0B /* Pods-TheMovieAppViperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieAppViperTests.debug.xcconfig"; path = "Target Support Files/Pods-TheMovieAppViperTests/Pods-TheMovieAppViperTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A97ADCF241F39F569D0FF8E7 /* Pods_TheMovieAppViper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheMovieAppViper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D707302E25CB21B2003E7C0D /* DetailMoviePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMoviePresenter.swift; sourceTree = "<group>"; };
 		D750EA9625C9595300F854A7 /* MovieInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInteractor.swift; sourceTree = "<group>"; };
 		D750EA9B25C9595E00F854A7 /* DetailMovieInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMovieInteractor.swift; sourceTree = "<group>"; };
 		D750EAA025C9596E00F854A7 /* FavoriteMoviesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesInteractor.swift; sourceTree = "<group>"; };
@@ -151,6 +153,14 @@
 				5196DD9F0B22E9F0B73B5AAE /* Pods_TheMovieAppViperTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D707302D25CB21A2003E7C0D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				D707302E25CB21B2003E7C0D /* DetailMoviePresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		D750EA6A25C9556900F854A7 /* Module */ = {
@@ -234,6 +244,7 @@
 		D750EA7825C9564C00F854A7 /* DetailPage */ = {
 			isa = PBXGroup;
 			children = (
+				D707302D25CB21A2003E7C0D /* Presenter */,
 				D750EA8125C956FF00F854A7 /* Controller */,
 				D750EA8025C956E500F854A7 /* View */,
 			);
@@ -740,6 +751,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D707302F25CB21B2003E7C0D /* DetailMoviePresenter.swift in Sources */,
 				D750EAE925C9A95100F854A7 /* MovieMapper.swift in Sources */,
 				D750EAE425C9A80700F854A7 /* MovieModel.swift in Sources */,
 				D750EAD625C95E9D00F854A7 /* MoviesResponse.swift in Sources */,
