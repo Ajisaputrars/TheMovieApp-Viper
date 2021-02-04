@@ -11,6 +11,7 @@ class DetailPageView: UIView {
   
   let scrollView: UIScrollView = {
     let scrollView = UIScrollView()
+    scrollView.showsVerticalScrollIndicator = false
     scrollView.translatesAutoresizingMaskIntoConstraints = false
     return scrollView
   }()
@@ -74,7 +75,6 @@ class DetailPageView: UIView {
     self.scrollView.addSubview(self.movieTitleLabel)
     self.movieTitleLabel.topAnchor.constraint(equalTo: self.movieImageView.bottomAnchor, constant: 16).isActive = true
     self.movieTitleLabel.leftAnchor.constraint(equalTo: self.scrollView.leftAnchor, constant: 16).isActive = true
-//    self.movieNameLabel.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor, constant: -16).isActive = true
     self.movieTitleLabel.rightAnchor.constraint(equalTo: self.scrollView.rightAnchor, constant: -16).isActive = true
     self.movieTitleLabel.centerXAnchor.constraint(equalTo: self.scrollView.centerXAnchor).isActive = true
     

@@ -13,7 +13,7 @@ class FavoritePageController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view = self.moviePageView
-    self.title = "Favorite Movies"
+    self.title = "Favorite"
     
     self.moviePageView.movieTableView.delegate = self
     self.moviePageView.movieTableView.dataSource = self

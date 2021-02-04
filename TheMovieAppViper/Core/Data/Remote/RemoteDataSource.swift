@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol RemoteDataSourceProtocol: class {
-  func getCategories() -> AnyPublisher<[MovieResultResponse], Error>
+  func getMovies() -> AnyPublisher<[MovieResultResponse], Error>
 }
 
 final class RemoteDataSource {
@@ -18,7 +18,7 @@ final class RemoteDataSource {
 }
 
 extension RemoteDataSource: RemoteDataSourceProtocol {
-  func getCategories() -> AnyPublisher<[MovieResultResponse], Error> {
+  func getMovies() -> AnyPublisher<[MovieResultResponse], Error> {
     return Future<[MovieResultResponse], Error> { completion in
       var urlComponent = URLComponents()
       urlComponent.scheme = "https"

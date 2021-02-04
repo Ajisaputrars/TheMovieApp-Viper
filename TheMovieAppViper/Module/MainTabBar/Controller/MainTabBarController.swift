@@ -30,7 +30,7 @@ class MainTabBarController: UITabBarController {
 
     let profilePageController = ProfilePageController()
     let aboutPageNavigationController = UINavigationController(rootViewController: profilePageController)
-    aboutPageNavigationController.tabBarItem = UITabBarItem(title: "About",
+    aboutPageNavigationController.tabBarItem = UITabBarItem(title: "Profile",
                                                             image: UIImage(systemName: "person.fill"),
                                                             tag: 2)
     

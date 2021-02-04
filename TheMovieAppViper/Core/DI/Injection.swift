@@ -9,20 +9,26 @@ import Foundation
 import RealmSwift
 
 final class Injection {
-  private func provideRepository() -> MovieRepositoryProtocol {
+  private func provideMovieRepository() -> MovieRepositoryProtocol {
     let realm = try? Realm()
     let locale = LocaleDataSource.shared(realm)
     let remote = RemoteDataSource.sharedInstance
     return MovieRepository.shared(locale, remote)
   }
   
+  private func provideFavoriteMovieRepository() -> FavoriteMovieRepositoryProtocol {
+    let realm = try? Realm()
+    let locale = FavoriteDataSource.shared(realm)
+    return FavoriteMovieRepository.shared(locale)
+  }
+  
   func provideMovieUseCase() -> MovieUseCase {
-    let repository = self.provideRepository()
+    let repository = self.provideMovieRepository()
     return MovieInteractor(repository: repository)
   }
 
   func provideDetailUseCase(movie: MovieModel) -> DetailMovielUseCase {
-    let repository = self.provideRepository()
+    let repository = self.provideMovieRepository()
     return DetailMovieInteractor(repository: repository, movie: movie)
   }
 }

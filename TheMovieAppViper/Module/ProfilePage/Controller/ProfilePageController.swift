@@ -13,7 +13,7 @@ class ProfilePageController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view = self.profilePageView
-    self.title = "About Me"
+    self.title = "Profile"
     
   }
   

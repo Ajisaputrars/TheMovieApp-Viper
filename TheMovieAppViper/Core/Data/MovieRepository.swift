@@ -28,22 +28,16 @@ final class MovieRepository {
 
 extension MovieRepository: MovieRepositoryProtocol {
   func getMovies() -> AnyPublisher<[MovieModel], Error> {
-    return self.locale.getMovies()
-      .flatMap { result -> AnyPublisher<[MovieModel], Error> in
-        if result.isEmpty {
-          return self.remote.getCategories()
-            .map { MovieMapper.mapMovieResultResponsesToEntities(input: $0) }
-            .flatMap { self.locale.addMoviesToLocalStorage(from: $0) }
-            .filter { $0 }
-            .flatMap { _ in self.locale.getMovies()
-              .map { MovieMapper.mapMovieEntitiesToDomains(input: $0) }
-            }
-            .eraseToAnyPublisher()
-        } else {
-          return self.locale.getMovies()
-            .map { MovieMapper.mapMovieEntitiesToDomains(input: $0) }
-            .eraseToAnyPublisher()
-        }
+    return self.locale.getMovies().flatMap { result -> AnyPublisher<[MovieModel], Error> in
+      if result.isEmpty {
+        return self.remote.getMovies().map { MovieMapper.mapMovieResultResponsesToEntities(input: $0) }
+          .flatMap { self.locale.addMoviesToLocalStorage(from: $0) }
+          .filter { $0 }
+          .flatMap { _ in self.locale.getMovies().map { MovieMapper.mapMovieEntitiesToDomains(input: $0) }
+          }.eraseToAnyPublisher()
+      } else {
+        return self.locale.getMovies().map { MovieMapper.mapMovieEntitiesToDomains(input: $0) }.eraseToAnyPublisher()
+      }
       }.eraseToAnyPublisher()
   }
 }

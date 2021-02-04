@@ -26,6 +26,7 @@ class MoviePageView: UIView {
   let movieTableView: UITableView = {
     let tableView = UITableView()
     tableView.register(MovieTableViewCell.self, forCellReuseIdentifier: "cell")
+    tableView.showsVerticalScrollIndicator = false
     tableView.translatesAutoresizingMaskIntoConstraints = false
     return tableView
   }()

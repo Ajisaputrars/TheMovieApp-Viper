@@ -31,10 +31,11 @@ extension LocaleDataSource: LocaleDataSourceProtocol {
     return Future<[MovieEntity], Error> { completion in
       if let realm = self.realm {
         let movies: Results<MovieEntity> = {
-          realm.objects(MovieEntity.self)
+           realm.objects(MovieEntity.self)
             .sorted(byKeyPath: "title", ascending: true)
         }()
-        completion(.success(movies.toArray(ofType: MovieEntity.self)))
+        let moviesArray = movies.toArray(ofType: MovieEntity.self)
+        completion(.success(moviesArray))
       } else {
         completion(.failure(DatabaseError.invalidInstance))
       }

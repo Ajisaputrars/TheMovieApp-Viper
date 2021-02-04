@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import Combine
+
+protocol FavoriteMovieUseCase {
+  func getFavoriteMovie(id: Int) -> AnyPublisher<[MovieModel], Error>
+  func addFavoriteMovie(movie: MovieModel) -> AnyPublisher<Bool, Error>
+  func deleteFavoriteMovie(movie: MovieModel) -> AnyPublisher<Bool, Error>
+}
