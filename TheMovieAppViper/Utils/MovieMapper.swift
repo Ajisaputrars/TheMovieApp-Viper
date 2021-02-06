@@ -63,12 +63,5 @@ final class MovieMapper {
         releaseDate: entity.releaseDate
       )
     }
-//    return MovieModel(
-//      id: movieEntity.id,
-//      title: movieEntity.title,
-//      overview: movieEntity.overview,
-//      posterPath: movieEntity.posterPath,
-//      releaseDate: movieEntity.releaseDate
-//    )
   }
 }

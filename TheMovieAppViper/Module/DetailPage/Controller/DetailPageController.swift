@@ -9,9 +9,18 @@ import UIKit
 
 class DetailPageController: UIViewController {
   private lazy var detailPageView = DetailPageView(frame: self.view.frame)
-  var presenter: DetailMoviePresenter!
+  private let presenter: DetailMoviePresenter
   private var favoriteButton: UIBarButtonItem!
   private var isFavorite = false
+  
+  init(presenter: DetailMoviePresenter) {
+    self.presenter = presenter
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()

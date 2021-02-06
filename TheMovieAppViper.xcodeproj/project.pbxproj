@@ -177,6 +177,14 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		D70E487D25CF064B008AC70E /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				D7ADB4EB25CEB72700EF303C /* FavoriteRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		D71875A625CEABE000FFC437 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,7 +288,7 @@
 			children = (
 				D71875A625CEABE000FFC437 /* Presenter */,
 				D750EA8725C9573800F854A7 /* Controller */,
-				D7ADB4EB25CEB72700EF303C /* FavoriteRouter.swift */,
+				D70E487D25CF064B008AC70E /* Router */,
 			);
 			path = FavoritePage;
 			sourceTree = "<group>";

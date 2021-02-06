@@ -15,16 +15,21 @@ class MainTabBarController: UITabBarController {
     appearance.backgroundColor = #colorLiteral(red: 0, green: 0.5181589127, blue: 1, alpha: 1)
     appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     
-    let moviePageController = MoviePageController()
-    moviePageController.moviePresenter = MoviePresenter(movieUseCase: Injection.init().provideMovieUseCase())
+    let moviePageController = MoviePageController(
+      presenter: MoviePresenter(
+        movieUseCase: Injection.init()
+          .provideMovieUseCase()
+      )
+    )
     let moviePageNavigationController = UINavigationController(rootViewController: moviePageController)
     moviePageNavigationController.tabBarItem = UITabBarItem(title: "Movies",
                                                             image: UIImage(systemName: "film"),
                                                             tag: 0)
 
-    let favoritePageController = FavoritePageController()
-    favoritePageController.presenter = FavoritePresenter(
-      favoriteUseCase: Injection.init().provideFavoriteMovieUseCase()
+    let favoritePageController = FavoritePageController(
+      presenter: FavoritePresenter(
+        favoriteUseCase: Injection.init().provideFavoriteMovieUseCase()
+      )
     )
     let favoritePageNavigationController = UINavigationController(rootViewController: favoritePageController)
     favoritePageNavigationController.tabBarItem = UITabBarItem(title: "Favorites",

@@ -9,14 +9,11 @@ import UIKit
 
 class FavoriteRouter {
   func goToDetailPage(from controller: UIViewController, withMovieModel movie: MovieModel) {
-    let detailPageController = DetailPageController()
+    let detailPageController = DetailPageController(presenter: DetailMoviePresenter(
+      detailUseCase: Injection.init().provideDetailUseCase(movie: movie),
+      favoriteUseCase: Injection.init().provideFavoriteMovieUseCase()
+    ))
     detailPageController.hidesBottomBarWhenPushed = true
-    let detailUseCase = Injection.init().provideDetailUseCase(movie: movie)
-    let favoriteUseCase = Injection.init().provideFavoriteMovieUseCase()
-    detailPageController.presenter = DetailMoviePresenter(
-      detailUseCase: detailUseCase,
-      favoriteUseCase: favoriteUseCase
-    )
     controller.navigationController?.pushViewController(detailPageController, animated: true)
   }
 }

@@ -45,7 +45,6 @@ extension FavoriteDataSource: FavoriteDataSourceProtocol {
   
   func getFavoriteMovie(movie: MovieModel) -> AnyPublisher<FavoriteMovieEntity, Error> {
     return Future<FavoriteMovieEntity, Error> { completion in
-      // MARK: UNTUK SEMENTARA MASIH SEPERTI ITNI DULU
       if let realm = self.realm {
         if let movie = realm.objects(FavoriteMovieEntity.self)
             .filter("id = \(movie.id)").first {

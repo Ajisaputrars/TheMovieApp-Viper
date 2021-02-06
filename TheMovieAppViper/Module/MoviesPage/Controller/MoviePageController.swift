@@ -10,7 +10,16 @@ import UIKit
 class MoviePageController: UIViewController {
   private lazy var moviePageView = MoviePageView(frame: self.view.frame)
   private var movies: [MovieModel] = []
-  var moviePresenter: MoviePresenter?
+  private let moviePresenter: MoviePresenter
+  
+  init(presenter: MoviePresenter) {
+    self.moviePresenter = presenter
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -19,9 +28,9 @@ class MoviePageController: UIViewController {
     
     self.moviePageView.movieTableView.delegate = self
     self.moviePageView.movieTableView.dataSource = self
-    self.moviePresenter?.loadingMealDelegate = self
+    self.moviePresenter.loadingMealDelegate = self
 
-    self.moviePresenter?.getMovies()
+    self.moviePresenter.getMovies()
   }
 }
 
@@ -40,7 +49,7 @@ extension MoviePageController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
-    moviePresenter?.goToDetailPage(from: self, withMovieModel: movies[indexPath.row])
+    moviePresenter.goToDetailPage(from: self, withMovieModel: movies[indexPath.row])
   }
   
 }
@@ -60,7 +69,7 @@ extension MoviePageController: LoadingMovieDelegate {
   }
   
   func noData() {
-    
+    self.moviePageView.setupNoDataState()
   }
   
 }

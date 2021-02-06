@@ -27,16 +27,10 @@ class DetailMoviePresenter {
     self.detailUseCase = detailUseCase
     self.favoriteUseCase = favoriteUseCase
     self.movie = detailUseCase.getMovie()
-//    self.loadDetailMovie()
     self.loadFavoriteMovie()
   }
   
-//  private func loadDetailMovie() {
-//    loadMovieDelegate?.loadMovie(movie: movie)
-//  }
-  
   private func loadFavoriteMovie() {
-//    favoriteMovie = nil
     favoriteUseCase.getFavoriteMovie(movie: movie)
       .receive(on: RunLoop.main)
       .sink { completion in
@@ -60,8 +54,8 @@ class DetailMoviePresenter {
       .receive(on: RunLoop.main)
       .sink { completion in
         switch completion {
-        case .failure: print("Fail")
-        case .finished: print("Finish")
+        case .failure: break
+        case .finished: break
         }
       } receiveValue: { _ in
         self.loadFavoriteMovie()
@@ -74,8 +68,8 @@ class DetailMoviePresenter {
         .receive(on: RunLoop.main)
         .sink { completion in
           switch completion {
-          case .failure: print("Fail")
-          case .finished: print("Finish")
+          case .failure: break
+          case .finished: break
           }
         } receiveValue: { _ in
           self.isInFavorite = false
