@@ -10,7 +10,6 @@ import UIKit
 class MoviePageController: UIViewController {
   private lazy var moviePageView = MoviePageView(frame: self.view.frame)
   private var movies: [MovieModel] = []
-  private var homeRouter = HomeRouter()
   var moviePresenter: MoviePresenter?
   
   override func viewDidLoad() {
@@ -22,7 +21,7 @@ class MoviePageController: UIViewController {
     self.moviePageView.movieTableView.dataSource = self
     self.moviePresenter?.loadingMealDelegate = self
 
-    self.moviePresenter?.getCategories()
+    self.moviePresenter?.getMovies()
   }
 }
 
@@ -41,7 +40,7 @@ extension MoviePageController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
-    homeRouter.goToDetailPage(from: self, withMovieModel: movies[indexPath.row])
+    moviePresenter?.goToDetailPage(from: self, withMovieModel: movies[indexPath.row])
   }
   
 }
@@ -52,12 +51,16 @@ extension MoviePageController: LoadingMovieDelegate {
   }
   
   func getErrorMessage(errorMessage: String?) {
-    
+    print(errorMessage!)
   }
   
   func setMovie(movies: [MovieModel]) {
     self.movies = movies
     self.moviePageView.movieTableView.reloadData()
+  }
+  
+  func noData() {
+    
   }
   
 }

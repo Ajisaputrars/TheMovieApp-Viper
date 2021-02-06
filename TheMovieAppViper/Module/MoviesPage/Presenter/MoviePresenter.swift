@@ -11,9 +11,9 @@ class MoviePresenter {
     self.movieUseCase = movieUseCase
   }
   
-  func getCategories() {
+  func getMovies() {
     self.loadingMealDelegate?.loadingView(isLoading: true)
-    self.movieUseCase.getCategories()
+    self.movieUseCase.getMovies()
       .receive(on: RunLoop.main)
       .sink(receiveCompletion: { completion in
         self.loadingMealDelegate?.loadingView(isLoading: false)
@@ -38,4 +38,5 @@ protocol LoadingMovieDelegate: class {
   func loadingView(isLoading: Bool)
   func getErrorMessage(errorMessage: String?)
   func setMovie(movies: [MovieModel])
+  func noData()
 }

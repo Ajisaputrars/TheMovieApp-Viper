@@ -28,7 +28,12 @@ final class Injection {
   }
 
   func provideDetailUseCase(movie: MovieModel) -> DetailMovielUseCase {
-    let repository = self.provideMovieRepository()
+    let repository = self.provideFavoriteMovieRepository()
     return DetailMovieInteractor(repository: repository, movie: movie)
+  }
+  
+  func provideFavoriteMovieUseCase() -> FavoriteMovieUseCase {
+    let repository = self.provideFavoriteMovieRepository()
+    return FavoriteMovieInteractor(repository: repository)
   }
 }

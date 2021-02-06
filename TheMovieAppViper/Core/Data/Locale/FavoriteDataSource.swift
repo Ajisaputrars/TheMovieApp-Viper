@@ -10,6 +10,7 @@ import Combine
 import RealmSwift
 
 protocol FavoriteDataSourceProtocol {
+  func getAllFavoriteMovie() -> AnyPublisher<[FavoriteMovieEntity], Error>
   func getFavoriteMovie(movie: MovieModel) -> AnyPublisher<FavoriteMovieEntity, Error>
   func addMovieToFavorite(movie: MovieModel) -> AnyPublisher<Bool, Error>
   func deleteFavoriteMovie(movie: MovieModel) -> AnyPublisher<Bool, Error>
@@ -28,9 +29,23 @@ final class FavoriteDataSource {
 }
 
 extension FavoriteDataSource: FavoriteDataSourceProtocol {
+  func getAllFavoriteMovie() -> AnyPublisher<[FavoriteMovieEntity], Error> {
+    return Future<[FavoriteMovieEntity], Error> { completion in
+      if let realm = self.realm {
+        let favoriteMovies: Results<FavoriteMovieEntity> = {
+           realm.objects(FavoriteMovieEntity.self)
+        }()
+        let moviesArray = favoriteMovies.toArray(ofType: FavoriteMovieEntity.self)
+        completion(.success(moviesArray))
+      } else {
+        completion(.failure(DatabaseError.invalidInstance))
+      }
+    }.eraseToAnyPublisher()
+  }
+  
   func getFavoriteMovie(movie: MovieModel) -> AnyPublisher<FavoriteMovieEntity, Error> {
     return Future<FavoriteMovieEntity, Error> { completion in
-      //MARK: UNTUK SEMENTARA MASIH SEPERTI ITNI DULU
+      // MARK: UNTUK SEMENTARA MASIH SEPERTI ITNI DULU
       if let realm = self.realm {
         if let movie = realm.objects(FavoriteMovieEntity.self)
             .filter("id = \(movie.id)").first {
@@ -65,13 +80,13 @@ extension FavoriteDataSource: FavoriteDataSourceProtocol {
   }
   
   func deleteFavoriteMovie(movie: MovieModel) -> AnyPublisher<Bool, Error> {
-    let favoriteMovieEntity = MovieMapper.mapDomainToMovieFavoriteEntity(input: movie)
+//    let favoriteMovieEntity = MovieMapper.mapDomainToMovieFavoriteEntity(input: movie)
     return Future<Bool, Error> { completion in
       DispatchQueue.main.async {
         if let realm = self.realm {
           do {
             try realm.write {
-              realm.delete(favoriteMovieEntity)
+              realm.delete(realm.objects(FavoriteMovieEntity.self).filter("id=%@", movie.id))
               completion(.success(true))
             }
           } catch {

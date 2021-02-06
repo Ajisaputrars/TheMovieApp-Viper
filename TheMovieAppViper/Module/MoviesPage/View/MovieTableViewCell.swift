@@ -19,7 +19,6 @@ class MovieTableViewCell: UITableViewCell {
   
   let movieTitleLabel: UILabel = {
     let label = UILabel()
-    label.text = "Grand Theft Auto V: The Revolutioner"
     label.numberOfLines = 2
     label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
     label.translatesAutoresizingMaskIntoConstraints = false
@@ -28,7 +27,6 @@ class MovieTableViewCell: UITableViewCell {
   
   let movieDateReleaseLabel: UILabel = {
     let label = UILabel()
-    label.text = "20 Januari 2020"
     label.numberOfLines = 1
     label.font = UIFont.italicSystemFont(ofSize: 12)
     label.translatesAutoresizingMaskIntoConstraints = false

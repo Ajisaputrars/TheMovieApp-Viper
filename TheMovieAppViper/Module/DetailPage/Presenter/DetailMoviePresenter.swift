@@ -6,20 +6,90 @@
 //
 
 import Foundation
+import Combine
 
 class DetailMoviePresenter {
-  private let useCase: DetailMovielUseCase
-  weak var loadMovieDelegate: LoadDetailMovieDelegate?
+  private let detailUseCase: DetailMovielUseCase
+  private let favoriteUseCase: FavoriteMovieUseCase
+  private var movie: MovieModel
+  private var favoriteMovie: MovieModel!
+  private var cancellables: Set<AnyCancellable> = []
+  private var isInFavorite = false
   
-  init(detailUseCase: DetailMovielUseCase) {
-    useCase = detailUseCase
+  weak var loadMovieDelegate: LoadDetailMovieDelegate? {
+    didSet {
+      self.loadMovieDelegate?.loadMovie(movie: movie)
+    }
+  }
+  weak var loadFavoriteMovieDelegate: FavoriteMovieDelegate?
+  
+  init(detailUseCase: DetailMovielUseCase, favoriteUseCase: FavoriteMovieUseCase) {
+    self.detailUseCase = detailUseCase
+    self.favoriteUseCase = favoriteUseCase
+    self.movie = detailUseCase.getMovie()
+//    self.loadDetailMovie()
+    self.loadFavoriteMovie()
   }
   
-  func loadDetailMovie() {
-    loadMovieDelegate?.loadMovie(movie: useCase.getMovie())
+//  private func loadDetailMovie() {
+//    loadMovieDelegate?.loadMovie(movie: movie)
+//  }
+  
+  private func loadFavoriteMovie() {
+//    favoriteMovie = nil
+    favoriteUseCase.getFavoriteMovie(movie: movie)
+      .receive(on: RunLoop.main)
+      .sink { completion in
+        switch completion {
+        case .failure: break
+        case .finished : break
+        }
+      } receiveValue: { movie in
+        self.favoriteMovie = movie
+        self.isInFavorite = true
+        self.loadFavoriteMovieDelegate?.favoriteStatus(isFavorite: self.isInFavorite)
+      }.store(in: &cancellables)
   }
+  
+  func isMovieInFavorite() -> Bool {
+    return isInFavorite
+  }
+  
+  func addMovieToFavorite() {
+    favoriteUseCase.addFavoriteMovie(movie: movie)
+      .receive(on: RunLoop.main)
+      .sink { completion in
+        switch completion {
+        case .failure: print("Fail")
+        case .finished: print("Finish")
+        }
+      } receiveValue: { _ in
+        self.loadFavoriteMovie()
+      }.store(in: &cancellables)
+  }
+  
+  func deleteMovieFromFavorite() {
+    if favoriteMovie != nil {
+      favoriteUseCase.deleteFavoriteMovie(movie: favoriteMovie)
+        .receive(on: RunLoop.main)
+        .sink { completion in
+          switch completion {
+          case .failure: print("Fail")
+          case .finished: print("Finish")
+          }
+        } receiveValue: { _ in
+          self.isInFavorite = false
+          self.loadFavoriteMovieDelegate?.favoriteStatus(isFavorite: self.isInFavorite)
+        }.store(in: &cancellables)
+    }
+  }
+  
 }
 
 protocol LoadDetailMovieDelegate: class {
   func loadMovie(movie: MovieModel)
+}
+
+protocol FavoriteMovieDelegate: class {
+  func favoriteStatus(isFavorite: Bool)
 }

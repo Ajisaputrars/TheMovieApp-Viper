@@ -23,8 +23,11 @@ class MainTabBarController: UITabBarController {
                                                             tag: 0)
 
     let favoritePageController = FavoritePageController()
+    favoritePageController.presenter = FavoritePresenter(
+      favoriteUseCase: Injection.init().provideFavoriteMovieUseCase()
+    )
     let favoritePageNavigationController = UINavigationController(rootViewController: favoritePageController)
-    favoritePageNavigationController.tabBarItem = UITabBarItem(title: "Favorite",
+    favoritePageNavigationController.tabBarItem = UITabBarItem(title: "Favorites",
                                                                image: UIImage(systemName: "star.fill"),
                                                                tag: 1)
 

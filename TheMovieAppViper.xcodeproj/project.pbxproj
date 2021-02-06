@@ -12,6 +12,7 @@
 		D707302F25CB21B2003E7C0D /* DetailMoviePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D707302E25CB21B2003E7C0D /* DetailMoviePresenter.swift */; };
 		D707303725CB29EA003E7C0D /* ApiKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = D707303625CB29EA003E7C0D /* ApiKey.plist */; };
 		D707303C25CB2A31003E7C0D /* MovieDbUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D707303B25CB2A31003E7C0D /* MovieDbUrl.swift */; };
+		D71875A825CEABF100FFC437 /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71875A725CEABF100FFC437 /* FavoritePresenter.swift */; };
 		D72B6DED25CC2F0C0078912F /* FavoriteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72B6DEC25CC2F0C0078912F /* FavoriteDataSource.swift */; };
 		D72B6DF225CC2F240078912F /* FavoriteMovieRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72B6DF125CC2F240078912F /* FavoriteMovieRepository.swift */; };
 		D72B6DF725CC5A660078912F /* FavoriteMovieEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72B6DF625CC5A660078912F /* FavoriteMovieEntity.swift */; };
@@ -47,6 +48,7 @@
 		D769C08125C47E7400655CD5 /* MoviePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D769C08025C47E7400655CD5 /* MoviePageView.swift */; };
 		D769C08C25C4822E00655CD5 /* DetailPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D769C08B25C4822E00655CD5 /* DetailPageController.swift */; };
 		D769C09425C4879B00655CD5 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D769C09325C4879B00655CD5 /* MovieTableViewCell.swift */; };
+		D7ADB4EC25CEB72700EF303C /* FavoriteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ADB4EB25CEB72700EF303C /* FavoriteRouter.swift */; };
 		D7D2F8A625C9CCD6004A191E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D2F8A525C9CCD6004A191E /* Utils.swift */; };
 		D7EA37F125C7477900D81811 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D7EA37F025C7477900D81811 /* .swiftlint.yml */; };
 		E5537093CF1409EBE93075B5 /* Pods_TheMovieAppViper_TheMovieAppViperUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37D30126067B8863DF7D7EF8 /* Pods_TheMovieAppViper_TheMovieAppViperUITests.framework */; };
@@ -81,6 +83,7 @@
 		D707302E25CB21B2003E7C0D /* DetailMoviePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMoviePresenter.swift; sourceTree = "<group>"; };
 		D707303625CB29EA003E7C0D /* ApiKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiKey.plist; sourceTree = "<group>"; };
 		D707303B25CB2A31003E7C0D /* MovieDbUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDbUrl.swift; sourceTree = "<group>"; };
+		D71875A725CEABF100FFC437 /* FavoritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenter.swift; sourceTree = "<group>"; };
 		D72B6DEC25CC2F0C0078912F /* FavoriteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDataSource.swift; sourceTree = "<group>"; };
 		D72B6DF125CC2F240078912F /* FavoriteMovieRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovieRepository.swift; sourceTree = "<group>"; };
 		D72B6DF625CC5A660078912F /* FavoriteMovieEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovieEntity.swift; sourceTree = "<group>"; };
@@ -120,6 +123,7 @@
 		D769C08025C47E7400655CD5 /* MoviePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePageView.swift; sourceTree = "<group>"; };
 		D769C08B25C4822E00655CD5 /* DetailPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageController.swift; sourceTree = "<group>"; };
 		D769C09325C4879B00655CD5 /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
+		D7ADB4EB25CEB72700EF303C /* FavoriteRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRouter.swift; sourceTree = "<group>"; };
 		D7D2F8A525C9CCD6004A191E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		D7EA37F025C7477900D81811 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		D9802B76DC1015DEF985018B /* Pods-TheMovieAppViper-TheMovieAppViperUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheMovieAppViper-TheMovieAppViperUITests.debug.xcconfig"; path = "Target Support Files/Pods-TheMovieAppViper-TheMovieAppViperUITests/Pods-TheMovieAppViper-TheMovieAppViperUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +173,14 @@
 			isa = PBXGroup;
 			children = (
 				D707302E25CB21B2003E7C0D /* DetailMoviePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		D71875A625CEABE000FFC437 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				D71875A725CEABF100FFC437 /* FavoritePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -266,7 +278,9 @@
 		D750EA7925C9565500F854A7 /* FavoritePage */ = {
 			isa = PBXGroup;
 			children = (
+				D71875A625CEABE000FFC437 /* Presenter */,
 				D750EA8725C9573800F854A7 /* Controller */,
+				D7ADB4EB25CEB72700EF303C /* FavoriteRouter.swift */,
 			);
 			path = FavoritePage;
 			sourceTree = "<group>";
@@ -777,6 +791,7 @@
 				D750EACA25C95CC900F854A7 /* MovieEntity.swift in Sources */,
 				D750EAEE25C9AEA700F854A7 /* MovieRouter.swift in Sources */,
 				D769C04125C4684E00655CD5 /* MoviePageController.swift in Sources */,
+				D71875A825CEABF100FFC437 /* FavoritePresenter.swift in Sources */,
 				D769C04725C4684E00655CD5 /* TheMovieAppViper.xcdatamodeld in Sources */,
 				D75D8C8D25C73D7400DD6907 /* MainTabBarController.swift in Sources */,
 				D750EA9C25C9595E00F854A7 /* DetailMovieInteractor.swift in Sources */,
@@ -792,6 +807,7 @@
 				D72B6DED25CC2F0C0078912F /* FavoriteDataSource.swift in Sources */,
 				D75D8C9225C73D9000DD6907 /* ProfilePageController.swift in Sources */,
 				D72B6DF725CC5A660078912F /* FavoriteMovieEntity.swift in Sources */,
+				D7ADB4EC25CEB72700EF303C /* FavoriteRouter.swift in Sources */,
 				D750EA9725C9595300F854A7 /* MovieInteractor.swift in Sources */,
 				D750EAA625C95A5F00F854A7 /* Injection.swift in Sources */,
 				D750EABF25C95C4D00F854A7 /* RemoteDataSource.swift in Sources */,

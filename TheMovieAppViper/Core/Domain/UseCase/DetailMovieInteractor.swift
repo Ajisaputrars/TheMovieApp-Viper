@@ -6,16 +6,17 @@
 //
 
 import Foundation
+import Combine
 
 protocol DetailMovielUseCase {
   func getMovie() -> MovieModel
 }
 
 class DetailMovieInteractor: DetailMovielUseCase {
-  private let repository: MovieRepositoryProtocol
+  private let repository: FavoriteMovieRepositoryProtocol
   private let movie: MovieModel
 
-  required init(repository: MovieRepositoryProtocol, movie: MovieModel) {
+  required init(repository: FavoriteMovieRepositoryProtocol, movie: MovieModel) {
     self.repository = repository
     self.movie = movie
   }

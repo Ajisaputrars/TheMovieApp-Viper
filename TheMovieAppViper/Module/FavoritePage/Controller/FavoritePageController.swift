@@ -9,34 +9,34 @@ import UIKit
 
 class FavoritePageController: UIViewController {
   private lazy var moviePageView = MoviePageView(frame: self.view.frame)
+  var presenter: FavoritePresenter!
+  private var favoriteMovies: [MovieModel] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view = self.moviePageView
-    self.title = "Favorite"
+    self.title = "Favorites"
     
     self.moviePageView.movieTableView.delegate = self
     self.moviePageView.movieTableView.dataSource = self
     
-    self.moviePageView.setupLoadingView(isLoading: true)
-    DispatchQueue.global().async {
-      Thread.sleep(forTimeInterval: 2)
-      
-      DispatchQueue.main.async {
-        self.moviePageView.setupLoadingView(isLoading: false)
-      }
-    }
+    presenter.loadingFavoriteDelegate = self
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    presenter.getFavoriteMovies()
+  }
 }
 
 extension FavoritePageController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 10
+    return favoriteMovies.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? MovieTableViewCell {
+      cell.configureCell(movie: favoriteMovies[indexPath.row])
       return cell
     }
     return UITableViewCell()
@@ -44,9 +44,26 @@ extension FavoritePageController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
-    let controller = DetailPageController()
-    controller.hidesBottomBarWhenPushed = true
-    self.navigationController?.pushViewController(controller, animated: true)
+    presenter.goToDetailPage(from: self, withMovieModel: favoriteMovies[indexPath.row])
   }
   
+}
+
+extension FavoritePageController: LoadingMovieDelegate {
+  func loadingView(isLoading: Bool) {
+    self.moviePageView.setupLoadingView(isLoading: isLoading)
+  }
+  
+  func getErrorMessage(errorMessage: String?) {
+    print(errorMessage!)
+  }
+  
+  func setMovie(movies: [MovieModel]) {
+    self.favoriteMovies = movies
+    self.moviePageView.movieTableView.reloadData()
+  }
+  
+  func noData() {
+    self.moviePageView.setupNoDataState()
+  }
 }

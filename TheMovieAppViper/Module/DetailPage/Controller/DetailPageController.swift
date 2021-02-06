@@ -9,7 +9,7 @@ import UIKit
 
 class DetailPageController: UIViewController {
   private lazy var detailPageView = DetailPageView(frame: self.view.frame)
-  var presenter: DetailMoviePresenter?
+  var presenter: DetailMoviePresenter!
   private var favoriteButton: UIBarButtonItem!
   private var isFavorite = false
   
@@ -18,20 +18,24 @@ class DetailPageController: UIViewController {
     view = self.detailPageView
     title = "Detail Movie"
     
-    presenter?.loadMovieDelegate = self
-    presenter?.loadDetailMovie()
+    presenter.loadMovieDelegate = self
+    presenter.loadFavoriteMovieDelegate = self
     
-    favoriteButton = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(favoriteButtonPressed(sender:)))
+    favoriteButton = UIBarButtonItem(
+      image: UIImage(systemName: "star"),
+      style: .plain,
+      target: self,
+      action: #selector(favoriteButtonPressed(sender:))
+    )
     navigationItem.rightBarButtonItem = favoriteButton
   }
   
   @objc
   private func favoriteButtonPressed(sender: UIBarButtonItem) {
-    isFavorite = !isFavorite
-    if isFavorite {
-      favoriteButton.image = UIImage(systemName: "star.fill")
+    if presenter.isMovieInFavorite() {
+      presenter.deleteMovieFromFavorite()
     } else {
-      favoriteButton.image = UIImage(systemName: "star")
+      presenter.addMovieToFavorite()
     }
   }
 }
@@ -39,5 +43,15 @@ class DetailPageController: UIViewController {
 extension DetailPageController: LoadDetailMovieDelegate {
   func loadMovie(movie: MovieModel) {
     detailPageView.setupDetailView(withMovieModel: movie)
+  }
+}
+
+extension DetailPageController: FavoriteMovieDelegate {
+  func favoriteStatus(isFavorite: Bool) {
+    if isFavorite {
+      favoriteButton.image = UIImage(systemName: "star.fill")
+    } else {
+      favoriteButton.image = UIImage(systemName: "star")
+    }
   }
 }

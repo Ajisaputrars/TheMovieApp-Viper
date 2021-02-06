@@ -43,13 +43,32 @@ final class MovieMapper {
     return entity
   }
   
-  static func mapMovieFavoriteEntityToDomain(input movieEntity: FavoriteMovieEntity) -> MovieModel {
+  static func mapMovieFavoriteEntityToDomain(input favoriteEntity: FavoriteMovieEntity) -> MovieModel {
     return MovieModel(
-      id: movieEntity.id,
-      title: movieEntity.title,
-      overview: movieEntity.overview,
-      posterPath: movieEntity.posterPath,
-      releaseDate: movieEntity.releaseDate
+      id: favoriteEntity.id,
+      title: favoriteEntity.title,
+      overview: favoriteEntity.overview,
+      posterPath: favoriteEntity.posterPath,
+      releaseDate: favoriteEntity.releaseDate
     )
+  }
+  
+  static func mapMovieFavoritesEntityToDomains(input favoriteEntities: [FavoriteMovieEntity]) -> [MovieModel] {
+    return favoriteEntities.map { entity in
+      return MovieModel(
+        id: entity.id,
+        title: entity.title,
+        overview: entity.overview,
+        posterPath: entity.posterPath,
+        releaseDate: entity.releaseDate
+      )
+    }
+//    return MovieModel(
+//      id: movieEntity.id,
+//      title: movieEntity.title,
+//      overview: movieEntity.overview,
+//      posterPath: movieEntity.posterPath,
+//      releaseDate: movieEntity.releaseDate
+//    )
   }
 }

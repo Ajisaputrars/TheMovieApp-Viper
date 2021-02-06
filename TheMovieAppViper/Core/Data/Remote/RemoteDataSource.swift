@@ -33,7 +33,8 @@ extension RemoteDataSource: RemoteDataSourceProtocol {
       guard let url = urlComponent.url else {return}
       var request = URLRequest(url: url)
       request.httpMethod = "GET"
-      request.timeoutInterval = 3
+      request.timeoutInterval = 5
+      print(url)
       
       URLSession.shared.dataTask(with: request) { maybeData, maybeResponse, maybeError in
         if maybeError != nil {

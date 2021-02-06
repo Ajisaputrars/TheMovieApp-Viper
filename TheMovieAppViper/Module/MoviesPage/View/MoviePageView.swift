@@ -31,6 +31,14 @@ class MoviePageView: UIView {
     return tableView
   }()
   
+  let noDataLabel: UILabel = {
+    let label = UILabel()
+    label.text = "No Data"
+    label.textColor = .gray
+    label.translatesAutoresizingMaskIntoConstraints = false
+    return label
+  }()
+  
   func setupLoadingView(isLoading: Bool) {
     self.movieTableView.isHidden = isLoading
     self.loadingLabel.isHidden = !isLoading
@@ -42,6 +50,11 @@ class MoviePageView: UIView {
     }
   }
   
+  func setupNoDataState() {
+    self.movieTableView.isHidden = true
+    self.noDataLabel.isHidden = false
+  }
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     self.setupView()
@@ -49,6 +62,10 @@ class MoviePageView: UIView {
   
   private func setupView() {
     self.backgroundColor = .white
+    
+    self.addSubview(noDataLabel)
+    noDataLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+    noDataLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     
     self.addSubview(self.movieTableView)
     self.movieTableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true

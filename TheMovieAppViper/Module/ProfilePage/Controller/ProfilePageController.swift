@@ -9,6 +9,7 @@ import UIKit
 
 class ProfilePageController: UIViewController {
   private lazy var profilePageView = ProfilePageView(frame: self.view.frame)
+//  var favoritePresenter: Favorite
   
   override func viewDidLoad() {
     super.viewDidLoad()
