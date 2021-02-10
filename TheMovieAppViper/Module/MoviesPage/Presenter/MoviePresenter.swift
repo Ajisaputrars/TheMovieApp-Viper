@@ -2,7 +2,7 @@ import UIKit
 import Combine
 
 class MoviePresenter {
-  private let router = HomeRouter()
+  private let router = MovieRouter()
   private let movieUseCase: MovieUseCase
   private var cancellables: Set<AnyCancellable> = []
   weak var loadingMealDelegate: LoadingMovieDelegate?
@@ -11,9 +11,9 @@ class MoviePresenter {
     self.movieUseCase = movieUseCase
   }
   
-  func getMovies() {
+  func getMovies(withQuery query: String? = nil) {
     self.loadingMealDelegate?.loadingView(isLoading: true)
-    self.movieUseCase.getMovies()
+    self.movieUseCase.getMovies(withQuery: query)
       .receive(on: RunLoop.main)
       .sink(receiveCompletion: { completion in
         self.loadingMealDelegate?.loadingView(isLoading: false)

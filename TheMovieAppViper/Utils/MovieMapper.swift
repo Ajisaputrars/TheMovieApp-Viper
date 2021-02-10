@@ -33,6 +33,18 @@ final class MovieMapper {
     }
   }
   
+  static func mapMovieResultResponseToDomains(input moviesResponses: [MovieResultResponse]) -> [MovieModel] {
+    return moviesResponses.map { result in
+      return MovieModel(
+        id: result.id,
+        title: result.title ?? "",
+        overview: result.overview ?? "",
+        posterPath: result.posterPath ?? "",
+        releaseDate: result.releaseDate ?? ""
+      )
+    }
+  }
+  
   static func mapDomainToMovieFavoriteEntity(input movieModel: MovieModel) -> FavoriteMovieEntity {
     let entity = FavoriteMovieEntity()
     entity.id = movieModel.id

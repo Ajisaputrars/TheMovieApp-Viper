@@ -1,13 +1,12 @@
-//
-//  MainPageView.swift
-//  TheMovieAppViper
-//
-//  Created by Aji Saputra Raka Siwi on 30/01/21.
-//
-
 import UIKit
 
-class MoviePageView: UIView {
+class SearchPageView: UIView {
+  
+  let movieSearchBar: UISearchBar = {
+    let searchBar = UISearchBar()
+    searchBar.translatesAutoresizingMaskIntoConstraints = false
+    return searchBar
+  }()
   
   let loadingIndicatorView: UIActivityIndicatorView = {
     let loadingView = UIActivityIndicatorView(style: .large)
@@ -40,6 +39,7 @@ class MoviePageView: UIView {
   }()
   
   func setupLoadingView(isLoading: Bool) {
+    self.noDataLabel.isHidden = true
     self.movieTableView.isHidden = isLoading
     self.loadingLabel.isHidden = !isLoading
     self.loadingIndicatorView.isHidden = !isLoading
@@ -48,12 +48,14 @@ class MoviePageView: UIView {
     } else {
       self.loadingIndicatorView.stopAnimating()
     }
-    self.noDataLabel.isHidden = true
   }
   
   func setupNoDataState() {
-    self.movieTableView.isHidden = true
     self.noDataLabel.isHidden = false
+    self.movieTableView.isHidden = true
+    self.loadingLabel.isHidden = true
+    self.loadingIndicatorView.isHidden = true
+    self.loadingIndicatorView.stopAnimating()
   }
   
   override init(frame: CGRect) {
@@ -64,12 +66,17 @@ class MoviePageView: UIView {
   private func setupView() {
     self.backgroundColor = .white
     
+    self.addSubview(movieSearchBar)
+    movieSearchBar.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
+    movieSearchBar.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor).isActive = true
+    movieSearchBar.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor).isActive = true
+    
     self.addSubview(noDataLabel)
     noDataLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     noDataLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     
     self.addSubview(self.movieTableView)
-    self.movieTableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+    self.movieTableView.topAnchor.constraint(equalTo: self.movieSearchBar.bottomAnchor, constant: -1).isActive = true
     self.movieTableView.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor).isActive = true
     self.movieTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     self.movieTableView.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor).isActive = true

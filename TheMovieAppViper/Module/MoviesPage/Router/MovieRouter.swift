@@ -7,12 +7,14 @@
 
 import UIKit
 
-class HomeRouter {
+class MovieRouter {
   func goToDetailPage(from controller: UIViewController, withMovieModel movie: MovieModel) {
-    let detailPageController = DetailPageController(presenter: DetailMoviePresenter(
-      detailUseCase: Injection.init().provideDetailUseCase(movie: movie),
-      favoriteUseCase: Injection.init().provideFavoriteMovieUseCase()
-    ))
+    let detailPageController = DetailPageController(
+      presenter: DetailMoviePresenter(
+        detailUseCase: Injection.init().provideDetailUseCase(movie: movie),
+        favoriteUseCase: Injection.init().provideFavoriteMovieUseCase()
+      )
+    )
     detailPageController.hidesBottomBarWhenPushed = true
     controller.navigationController?.pushViewController(detailPageController, animated: true)
   }

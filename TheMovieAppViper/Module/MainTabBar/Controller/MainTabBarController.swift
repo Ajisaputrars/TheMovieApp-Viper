@@ -17,14 +17,21 @@ class MainTabBarController: UITabBarController {
     
     let moviePageController = MoviePageController(
       presenter: MoviePresenter(
-        movieUseCase: Injection.init()
-          .provideMovieUseCase()
+        movieUseCase: Injection.init().provideMovieUseCase()
       )
     )
     let moviePageNavigationController = UINavigationController(rootViewController: moviePageController)
     moviePageNavigationController.tabBarItem = UITabBarItem(title: "Movies",
                                                             image: UIImage(systemName: "film"),
                                                             tag: 0)
+    
+    let searchPageController = SearchPageController(presenter: MoviePresenter(
+      movieUseCase: Injection.init().provideMovieUseCase()
+    ))
+    let searchPageNavigationController = UINavigationController(rootViewController: searchPageController)
+    searchPageNavigationController.tabBarItem = UITabBarItem(title: "Search",
+                                                             image: UIImage(systemName: "magnifyingglass"),
+                                                             tag: 1)
 
     let favoritePageController = FavoritePageController(
       presenter: FavoritePresenter(
@@ -34,15 +41,15 @@ class MainTabBarController: UITabBarController {
     let favoritePageNavigationController = UINavigationController(rootViewController: favoritePageController)
     favoritePageNavigationController.tabBarItem = UITabBarItem(title: "Favorites",
                                                                image: UIImage(systemName: "star.fill"),
-                                                               tag: 1)
+                                                               tag: 2)
 
     let profilePageController = ProfilePageController()
     let aboutPageNavigationController = UINavigationController(rootViewController: profilePageController)
     aboutPageNavigationController.tabBarItem = UITabBarItem(title: "Profile",
                                                             image: UIImage(systemName: "person.fill"),
-                                                            tag: 2)
+                                                            tag: 3)
     
-    let tabBars = [moviePageController, favoritePageController, profilePageController]
+    let tabBars = [moviePageController, searchPageController, favoritePageController, profilePageController]
     for tabBar in tabBars {
       tabBar.navigationController?.navigationBar.standardAppearance = appearance
       tabBar.navigationController?.navigationBar.tintColor = .white
@@ -52,6 +59,7 @@ class MainTabBarController: UITabBarController {
     }
     
     self.viewControllers = [moviePageNavigationController,
+                            searchPageNavigationController,
                             favoritePageNavigationController,
                             aboutPageNavigationController]
   }

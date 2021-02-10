@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol RemoteDataSourceProtocol: class {
-  func getMovies() -> AnyPublisher<[MovieResultResponse], Error>
+  func getMovies(withQuery query: String?) -> AnyPublisher<[MovieResultResponse], Error>
 }
 
 final class RemoteDataSource {
@@ -18,17 +18,27 @@ final class RemoteDataSource {
 }
 
 extension RemoteDataSource: RemoteDataSourceProtocol {
-  func getMovies() -> AnyPublisher<[MovieResultResponse], Error> {
+  func getMovies(withQuery query: String? = nil) -> AnyPublisher<[MovieResultResponse], Error> {
     return Future<[MovieResultResponse], Error> { completion in
       var urlComponent = URLComponents()
       urlComponent.scheme = "https"
       urlComponent.host = MovieDbUrl.host
-      urlComponent.path = MovieDbUrl.path
-      urlComponent.queryItems = [
-        URLQueryItem(name: "api_key", value: Utils.getApiKey()),
-        URLQueryItem(name: "language", value: "en"),
-        URLQueryItem(name: "page", value: "1")
-      ]
+      if let query = query {
+        urlComponent.path = MovieDbUrl.searchMoviePath
+        urlComponent.queryItems = [
+          URLQueryItem(name: "api_key", value: Utils.getApiKey()),
+          URLQueryItem(name: "language", value: "en"),
+          URLQueryItem(name: "query", value: query),
+          URLQueryItem(name: "page", value: "1")
+        ]
+      } else {
+        urlComponent.path = MovieDbUrl.getMoviePath
+        urlComponent.queryItems = [
+          URLQueryItem(name: "api_key", value: Utils.getApiKey()),
+          URLQueryItem(name: "language", value: "en"),
+          URLQueryItem(name: "page", value: "1")
+        ]
+      }
       
       guard let url = urlComponent.url else {return}
       var request = URLRequest(url: url)

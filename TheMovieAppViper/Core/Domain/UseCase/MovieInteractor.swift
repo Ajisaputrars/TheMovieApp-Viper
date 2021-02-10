@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol MovieUseCase {
-  func getMovies() -> AnyPublisher<[MovieModel], Error>
+  func getMovies(withQuery query: String?) -> AnyPublisher<[MovieModel], Error>
 }
 
 class MovieInteractor: MovieUseCase {
@@ -19,8 +19,8 @@ class MovieInteractor: MovieUseCase {
     self.repository = repository
   }
   
-  func getMovies() -> AnyPublisher<[MovieModel], Error> {
-    return repository.getMovies()
+  func getMovies(withQuery query: String? = nil) -> AnyPublisher<[MovieModel], Error> {
+    return repository.getMovies(withQuery: query)
   }
 
 }

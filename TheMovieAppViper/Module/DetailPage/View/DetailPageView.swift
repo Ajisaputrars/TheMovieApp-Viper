@@ -46,7 +46,11 @@ class DetailPageView: UIView {
   
   func setupDetailView(withMovieModel movie: MovieModel) {
     let posterImageUrl = URL(string: "https://image.tmdb.org/t/p/w500/\(movie.posterPath)")
-    movieImageView.sd_setImage(with: posterImageUrl, completed: nil)
+    movieImageView.sd_setImage(
+      with: posterImageUrl,
+      placeholderImage: UIImage(named: "placeholder"),
+      completed: nil
+    )
     movieTitleLabel.text = movie.title
     movieOverviewLabel.text = movie.overview
     movieReleaseDateLabel.text = Utils.changeDateStringIntoFormattedString(withStringDate: movie.releaseDate)
