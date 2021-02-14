@@ -11,7 +11,7 @@ import RealmSwift
 
 protocol FavoriteDataSourceProtocol {
   func getAllFavoriteMovie() -> AnyPublisher<[FavoriteMovieEntity], Error>
-  func getFavoriteMovie(movie: MovieModel) -> AnyPublisher<FavoriteMovieEntity, Error>
+  func getFavoriteMovie(movie: MovieModel) -> AnyPublisher<Bool, Error>
   func addMovieToFavorite(movie: MovieModel) -> AnyPublisher<Bool, Error>
   func deleteFavoriteMovie(movie: MovieModel) -> AnyPublisher<Bool, Error>
 }
@@ -43,12 +43,12 @@ extension FavoriteDataSource: FavoriteDataSourceProtocol {
     }.eraseToAnyPublisher()
   }
   
-  func getFavoriteMovie(movie: MovieModel) -> AnyPublisher<FavoriteMovieEntity, Error> {
-    return Future<FavoriteMovieEntity, Error> { completion in
+  func getFavoriteMovie(movie: MovieModel) -> AnyPublisher<Bool, Error> {
+    return Future<Bool, Error> { completion in
       if let realm = self.realm {
-        if let movie = realm.objects(FavoriteMovieEntity.self)
+        if let _ = realm.objects(FavoriteMovieEntity.self)
             .filter("id = \(movie.id)").first {
-          completion(.success(movie))
+          completion(.success(true))
         } else {
           completion(.failure(DatabaseError.invalidInstance))
         }

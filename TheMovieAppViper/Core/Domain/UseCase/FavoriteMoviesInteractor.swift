@@ -10,7 +10,7 @@ import Combine
 
 protocol FavoriteMovieUseCase {
   func getAllFavoriteMovie() -> AnyPublisher<[MovieModel], Error>
-  func getFavoriteMovie(movie: MovieModel) -> AnyPublisher<MovieModel, Error>
+  func getFavoriteMovie(movie: MovieModel) -> AnyPublisher<Bool, Error>
   func addFavoriteMovie(movie: MovieModel) -> AnyPublisher<Bool, Error>
   func deleteFavoriteMovie(movie: MovieModel) -> AnyPublisher<Bool, Error>
 }
@@ -26,7 +26,7 @@ class FavoriteMovieInteractor: FavoriteMovieUseCase {
     self.repository = repository
   }
   
-  func getFavoriteMovie(movie: MovieModel) -> AnyPublisher<MovieModel, Error> {
+  func getFavoriteMovie(movie: MovieModel) -> AnyPublisher<Bool, Error> {
     repository.getFavoriteMovies(movie: movie)
   }
   

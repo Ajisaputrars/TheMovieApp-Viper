@@ -38,8 +38,7 @@ class DetailMoviePresenter {
         case .failure: break
         case .finished : break
         }
-      } receiveValue: { movie in
-        self.favoriteMovie = movie
+      } receiveValue: { _ in
         self.isInFavorite = true
         self.loadFavoriteMovieDelegate?.favoriteStatus(isFavorite: self.isInFavorite)
       }.store(in: &cancellables)
@@ -63,8 +62,8 @@ class DetailMoviePresenter {
   }
   
   func deleteMovieFromFavorite() {
-    if favoriteMovie != nil {
-      favoriteUseCase.deleteFavoriteMovie(movie: favoriteMovie)
+    if isInFavorite {
+      favoriteUseCase.deleteFavoriteMovie(movie: movie)
         .receive(on: RunLoop.main)
         .sink { completion in
           switch completion {

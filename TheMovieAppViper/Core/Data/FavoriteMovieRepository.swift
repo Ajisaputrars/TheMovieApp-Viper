@@ -10,7 +10,7 @@ import Combine
 
 protocol FavoriteMovieRepositoryProtocol {
   func getAllFavoriteMovies() -> AnyPublisher<[MovieModel], Error>
-  func getFavoriteMovies(movie: MovieModel) -> AnyPublisher<MovieModel, Error>
+  func getFavoriteMovies(movie: MovieModel) -> AnyPublisher<Bool, Error>
   func deleteFavoriteMovie(movie: MovieModel) -> AnyPublisher<Bool, Error>
   func addFavoriteMovie(movie: MovieModel) -> AnyPublisher<Bool, Error>
 }
@@ -35,9 +35,10 @@ extension FavoriteMovieRepository: FavoriteMovieRepositoryProtocol {
     .eraseToAnyPublisher()
   }
   
-  func getFavoriteMovies(movie: MovieModel) -> AnyPublisher<MovieModel, Error> {
-    return self.favoriteDataSource.getFavoriteMovie(movie: movie).map {
-      MovieMapper.mapMovieFavoriteEntityToDomain(input: $0)
+  func getFavoriteMovies(movie: MovieModel) -> AnyPublisher<Bool, Error> {
+    return self.favoriteDataSource.getFavoriteMovie(movie: movie).map {_ in 
+      return true
+//      MovieMapper.mapMovieFavoriteEntityToDomain(input: $0)
     }
     .eraseToAnyPublisher()
   }
