@@ -7,6 +7,7 @@
 
 import UIKit
 import Movie
+import Core
 
 class DetailPageView: UIView {
   

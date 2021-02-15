@@ -10,7 +10,7 @@ import RealmSwift
 import Movie
 
 final class Injection {
-  private func provideMovieRepository() -> MovieRepositoryProtocol {
+  private func provideMovieRepository() -> MovieRepository {
     let realm = try? Realm()
     let locale = MovieLocaleDataSource.shared(realm)
     let remote = RemoteDataSource.sharedInstance

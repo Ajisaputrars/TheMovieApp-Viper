@@ -8,20 +8,21 @@
 import Foundation
 import Combine
 import Movie
+import Core
 
 protocol MovieUseCase {
   func getMovies(withQuery query: String?) -> AnyPublisher<[MovieModel], Error>
 }
 
 class MovieInteractor: MovieUseCase {
-  private let repository: MovieRepositoryProtocol
+  private let repository: MovieRepository
   
-  required init(repository: MovieRepositoryProtocol) {
+  required init(repository: MovieRepository) {
     self.repository = repository
   }
   
   func getMovies(withQuery query: String? = nil) -> AnyPublisher<[MovieModel], Error> {
-    return repository.getMovies(withQuery: query)
+    return repository.execute(request: query)
   }
 
 }

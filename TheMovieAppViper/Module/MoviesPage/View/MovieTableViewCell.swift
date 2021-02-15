@@ -8,6 +8,7 @@
 import UIKit
 import SDWebImage
 import Movie
+import Core
 
 class MovieTableViewCell: UITableViewCell {
   
