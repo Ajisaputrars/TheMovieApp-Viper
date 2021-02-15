@@ -10,9 +10,9 @@ target 'TheMovieAppViper' do
   pod 'SwiftLint'
   pod 'SDWebImage'
 
-#  target 'TheMovieAppViperTests' do
-#    inherit! :search_paths
-#    # Pods for testing
-#  end
+  target 'TheMovieAppViperTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
 
 end
