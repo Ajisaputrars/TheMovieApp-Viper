@@ -31,10 +31,10 @@
 		D769C09425C4879B00655CD5 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D769C09325C4879B00655CD5 /* MovieTableViewCell.swift */; };
 		D79C7D4525D3D21800E504E4 /* SearchPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C7D4425D3D21800E504E4 /* SearchPageController.swift */; };
 		D79C7D4D25D3D3A700E504E4 /* SearchPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C7D4C25D3D3A700E504E4 /* SearchPageView.swift */; };
-		D7C828B925D932F800849D43 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = D7C828B825D932F800849D43 /* SwiftPackageProductDependency */; };
-		D7C828BB25D932F800849D43 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = D7C828BA25D932F800849D43 /* SwiftPackageProductDependency */; };
-		D7C828D325D936FB00849D43 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = D7C828D225D936FB00849D43 /* SwiftPackageProductDependency */; };
-		D7C828D525D936FB00849D43 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = D7C828D425D936FB00849D43 /* SwiftPackageProductDependency */; };
+		D7C828B925D932F800849D43 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D7C828B825D932F800849D43 /* Realm */; };
+		D7C828BB25D932F800849D43 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D7C828BA25D932F800849D43 /* RealmSwift */; };
+		D7C828D325D936FB00849D43 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = D7C828D225D936FB00849D43 /* Core */; };
+		D7C828D525D936FB00849D43 /* Movie in Frameworks */ = {isa = PBXBuildFile; productRef = D7C828D425D936FB00849D43 /* Movie */; };
 		D7EA37F125C7477900D81811 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D7EA37F025C7477900D81811 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
@@ -103,10 +103,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				990C635C9DDDA9BCBC0B7FD7 /* Pods_TheMovieAppViper.framework in Frameworks */,
-				D7C828D325D936FB00849D43 /* BuildFile in Frameworks */,
-				D7C828B925D932F800849D43 /* BuildFile in Frameworks */,
-				D7C828BB25D932F800849D43 /* BuildFile in Frameworks */,
-				D7C828D525D936FB00849D43 /* BuildFile in Frameworks */,
+				D7C828D325D936FB00849D43 /* Core in Frameworks */,
+				D7C828B925D932F800849D43 /* Realm in Frameworks */,
+				D7C828BB25D932F800849D43 /* RealmSwift in Frameworks */,
+				D7C828D525D936FB00849D43 /* Movie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,10 +420,10 @@
 			);
 			name = TheMovieAppViper;
 			packageProductDependencies = (
-				D7C828B825D932F800849D43 /* SwiftPackageProductDependency */,
-				D7C828BA25D932F800849D43 /* SwiftPackageProductDependency */,
-				D7C828D225D936FB00849D43 /* SwiftPackageProductDependency */,
-				D7C828D425D936FB00849D43 /* SwiftPackageProductDependency */,
+				D7C828B825D932F800849D43 /* Realm */,
+				D7C828BA25D932F800849D43 /* RealmSwift */,
+				D7C828D225D936FB00849D43 /* Core */,
+				D7C828D425D936FB00849D43 /* Movie */,
 			);
 			productName = TheMovieAppViper;
 			productReference = D769C03925C4684E00655CD5 /* TheMovieAppViper.app */;
@@ -457,7 +457,7 @@
 			);
 			mainGroup = D769C03025C4684E00655CD5;
 			packageReferences = (
-				D750EA6025C9309700F854A7 /* RemoteSwiftPackageReference */,
+				D750EA6025C9309700F854A7 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = D769C03A25C4684E00655CD5 /* Products */;
 			projectDirPath = "";
@@ -860,7 +860,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D750EA6025C9309700F854A7 /* RemoteSwiftPackageReference */ = {
+		D750EA6025C9309700F854A7 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa";
 			requirement = {
@@ -871,21 +871,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D7C828B825D932F800849D43 /* SwiftPackageProductDependency */ = {
+		D7C828B825D932F800849D43 /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D750EA6025C9309700F854A7 /* RemoteSwiftPackageReference */;
+			package = D750EA6025C9309700F854A7 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = Realm;
 		};
-		D7C828BA25D932F800849D43 /* SwiftPackageProductDependency */ = {
+		D7C828BA25D932F800849D43 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D750EA6025C9309700F854A7 /* RemoteSwiftPackageReference */;
+			package = D750EA6025C9309700F854A7 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
 		};
-		D7C828D225D936FB00849D43 /* SwiftPackageProductDependency */ = {
+		D7C828D225D936FB00849D43 /* Core */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Core;
 		};
-		D7C828D425D936FB00849D43 /* SwiftPackageProductDependency */ = {
+		D7C828D425D936FB00849D43 /* Movie */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Movie;
 		};
