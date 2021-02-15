@@ -7,10 +7,9 @@
 
 import Foundation
 import Combine
-import Movie
 import Core
 
-class DetailMoviePresenter<GetFavoriteUseCase: UseCase, AddFavoriteUseCase: UseCase, DeleteFavoriteUseCase: UseCase>
+public class DetailMoviePresenter<GetFavoriteUseCase: UseCase, AddFavoriteUseCase: UseCase, DeleteFavoriteUseCase: UseCase>
 where
   GetFavoriteUseCase.Request == MovieModel, GetFavoriteUseCase.Response == Bool,
   AddFavoriteUseCase.Request == MovieModel, AddFavoriteUseCase.Response == Bool,
@@ -24,14 +23,14 @@ where
   private var cancellables: Set<AnyCancellable> = []
   private var isInFavorite = false
   
-  weak var loadMovieDelegate: LoadDetailMovieDelegate? {
+  public weak var loadMovieDelegate: LoadDetailMovieDelegate? {
     didSet {
       self.loadMovieDelegate?.loadMovie(movie: movie)
     }
   }
-  weak var loadFavoriteMovieDelegate: FavoriteMovieDelegate?
+  public weak var loadFavoriteMovieDelegate: FavoriteMovieDelegate?
   
-  init(getFavoriteUseCase: GetFavoriteUseCase, addFavoriteUseCase: AddFavoriteUseCase, deleteFavoriteUseCase: DeleteFavoriteUseCase, movie: MovieModel) {
+  public init(getFavoriteUseCase: GetFavoriteUseCase, addFavoriteUseCase: AddFavoriteUseCase, deleteFavoriteUseCase: DeleteFavoriteUseCase, movie: MovieModel) {
     self.getFavoriteUseCase = getFavoriteUseCase
     self.addFavoriteUseCase = addFavoriteUseCase
     self.deleteFavoriteUseCase = deleteFavoriteUseCase
@@ -53,11 +52,11 @@ where
       }.store(in: &cancellables)
   }
   
-  func isMovieInFavorite() -> Bool {
+  public func isMovieInFavorite() -> Bool {
     return isInFavorite
   }
   
-  func addMovieToFavorite() {
+  public func addMovieToFavorite() {
     addFavoriteUseCase.execute(request: movie)
       .receive(on: RunLoop.main)
       .sink { completion in
@@ -70,7 +69,7 @@ where
       }.store(in: &cancellables)
   }
   
-  func deleteMovieFromFavorite() {
+  public func deleteMovieFromFavorite() {
     if isInFavorite {
       deleteFavoriteUseCase.execute(request: movie)
         .receive(on: RunLoop.main)
@@ -88,10 +87,10 @@ where
   
 }
 
-protocol LoadDetailMovieDelegate: class {
+public protocol LoadDetailMovieDelegate: class {
   func loadMovie(movie: MovieModel)
 }
 
-protocol FavoriteMovieDelegate: class {
+public protocol FavoriteMovieDelegate: class {
   func favoriteStatus(isFavorite: Bool)
 }

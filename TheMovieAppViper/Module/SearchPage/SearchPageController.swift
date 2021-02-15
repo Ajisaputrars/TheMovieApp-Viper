@@ -75,7 +75,7 @@ extension SearchPageController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
-    moviePresenter.goToDetailPage(from: self, withMovieModel: movies[indexPath.row])
+    MovieRouter().goToDetailPage(from: self, withMovieModel: movies[indexPath.row])
   }
 }
 

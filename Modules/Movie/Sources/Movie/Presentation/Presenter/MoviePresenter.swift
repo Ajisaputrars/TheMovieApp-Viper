@@ -1,18 +1,17 @@
 import UIKit
 import Combine
-import Movie
 import Core
 
-class MoviePresenter<Request, Response, Interactor: UseCase> where Interactor.Request == Request, Interactor.Response == [MovieModel]  {
+public class MoviePresenter<Request, Response, Interactor: UseCase> where Interactor.Request == Request, Interactor.Response == [MovieModel]  {
   private let movieUseCase: Interactor
   private var cancellables: Set<AnyCancellable> = []
-  weak var loadingMealDelegate: LoadingMovieDelegate?
+  public weak var loadingMealDelegate: LoadingMovieDelegate?
 
-  init(movieUseCase: Interactor) {
+  public init(movieUseCase: Interactor) {
     self.movieUseCase = movieUseCase
   }
   
-  func getMovies(withQuery query: Request? = nil) {
+  public func getMovies(withQuery query: Request? = nil) {
     self.loadingMealDelegate?.loadingView(isLoading: true)
     self.movieUseCase.execute(request: query)
       .receive(on: RunLoop.main)
@@ -30,12 +29,9 @@ class MoviePresenter<Request, Response, Interactor: UseCase> where Interactor.Re
       .store(in: &cancellables)
   }
   
-  func goToDetailPage(from controller: UIViewController, withMovieModel movie: MovieModel) {
-    MovieRouter().goToDetailPage(from: controller, withMovieModel: movie)
-  }
 }
 
-protocol LoadingMovieDelegate: class {
+public protocol LoadingMovieDelegate: class {
   func loadingView(isLoading: Bool)
   func getErrorMessage(errorMessage: String?)
   func setMovie(movies: [MovieModel])

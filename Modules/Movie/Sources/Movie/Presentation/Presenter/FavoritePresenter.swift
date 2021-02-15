@@ -7,20 +7,19 @@
 
 import UIKit
 import Combine
-import Movie
 import Core
 
-class FavoritePresenter<Request, Response, Interactor: UseCase> where Interactor.Request == Request, Interactor.Response == [MovieModel] {
+public class FavoritePresenter<Request, Response, Interactor: UseCase> where Interactor.Request == Request, Interactor.Response == [MovieModel] {
   private let favoriteUseCase: Interactor
   private var cancellables: Set<AnyCancellable> = []
-  weak var loadingFavoriteDelegate: LoadingMovieDelegate?
+  public weak var loadingFavoriteDelegate: LoadingMovieDelegate?
   private var favoriteMovies: [MovieModel] = []
 
-  init(favoriteUseCase: Interactor) {
+  public init(favoriteUseCase: Interactor) {
     self.favoriteUseCase = favoriteUseCase
   }
   
-  func getFavoriteMovies() {
+  public func getFavoriteMovies() {
     self.loadingFavoriteDelegate?.loadingView(isLoading: true)
     self.favoriteUseCase.execute(request: nil)
       .receive(on: RunLoop.main)
@@ -42,7 +41,4 @@ class FavoritePresenter<Request, Response, Interactor: UseCase> where Interactor
       .store(in: &cancellables)
   }
   
-  func goToDetailPage(from controller: UIViewController, withMovieModel movie: MovieModel) {
-    FavoriteRouter().goToDetailPage(from: controller, withMovieModel: movie)
-  }
 }

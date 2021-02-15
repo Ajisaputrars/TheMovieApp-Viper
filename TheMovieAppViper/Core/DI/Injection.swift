@@ -12,13 +12,6 @@ import Core
 
 final class Injection {
   let realm = (UIApplication.shared.delegate as! AppDelegate).realm
-
-//  private func provideMovieRepository() -> GetMoviesRepository {
-//    let realm = try? Realm()
-//    let locale = MovieLocaleDataSource.shared(realm)
-//    let remote = MovieRemoteDataSource.shared
-//    return GetMoviesRepository.shared(locale, remote)
-//  }
   
   func provideMovieUseCase<U: UseCase>() -> U where U.Request == String, U.Response == [MovieModel] {
     let locale = MovieLocaleDataSource(realm: realm)
@@ -27,12 +20,6 @@ final class Injection {
     
     return Interactor(repository: repository) as! U
   }
-  
-//  private func provideFavoriteMovieRepository() -> FavoriteMovieRepository {
-//    let realm = try? Realm()
-//    let locale = FavoriteLocaleDataSource.shared(realm)
-//    return FavoriteMovieRepository.shared(locale)
-//  }
   
   func provideGetAllFavoriteMovieUseCase<U: UseCase>() -> U where U.Request == MovieModel, U.Response == [MovieModel] {
     let locale = FavoriteLocaleDataSource(realm: realm)
@@ -58,18 +45,4 @@ final class Injection {
     return Interactor(repository: repository) as! U
   }
   
-//  func provideMovieUseCase() -> MovieUseCase {
-//    let repository = self.provideMovieRepository()
-//    return MovieInteractor(repository: repository)
-//  }
-
-//  func provideDetailUseCase(movie: MovieModel) -> DetailMovielUseCase {
-//    let repository = self.provideFavoriteMovieRepository()
-//    return DetailMovieInteractor(repository: repository, movie: movie)
-//  }
-//
-//  func provideFavoriteMovieUseCase() -> FavoriteMovieUseCase {
-//    let repository = self.provideFavoriteMovieRepository()
-//    return FavoriteMovieInteractor(repository: repository)
-//  }
 }

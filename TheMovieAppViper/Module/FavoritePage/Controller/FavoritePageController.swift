@@ -55,7 +55,7 @@ extension FavoritePageController: UITableViewDelegate, UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
-    presenter.goToDetailPage(from: self, withMovieModel: favoriteMovies[indexPath.row])
+    FavoriteRouter().goToDetailPage(from: self, withMovieModel: favoriteMovies[indexPath.row])
   }
   
 }
