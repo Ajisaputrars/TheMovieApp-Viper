@@ -7,11 +7,12 @@
 
 import Foundation
 import RealmSwift
+import Movie
 
 final class Injection {
   private func provideMovieRepository() -> MovieRepositoryProtocol {
     let realm = try? Realm()
-    let locale = LocaleDataSource.shared(realm)
+    let locale = MovieLocaleDataSource.shared(realm)
     let remote = RemoteDataSource.sharedInstance
     return MovieRepository.shared(locale, remote)
   }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Movie
 
 class MovieRouter {
   func goToDetailPage(from controller: UIViewController, withMovieModel movie: MovieModel) {

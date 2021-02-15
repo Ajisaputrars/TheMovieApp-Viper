@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Movie
 
 class FavoriteRouter {
   func goToDetailPage(from controller: UIViewController, withMovieModel movie: MovieModel) {

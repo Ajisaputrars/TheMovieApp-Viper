@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Movie
 
 final class MovieMapper {
   
@@ -55,15 +56,15 @@ final class MovieMapper {
     return entity
   }
   
-  static func mapMovieFavoriteEntityToDomain(input favoriteEntity: FavoriteMovieEntity) -> MovieModel {
-    return MovieModel(
-      id: favoriteEntity.id,
-      title: favoriteEntity.title,
-      overview: favoriteEntity.overview,
-      posterPath: favoriteEntity.posterPath,
-      releaseDate: favoriteEntity.releaseDate
-    )
-  }
+//  static func mapMovieFavoriteEntityToDomainz(input favoriteEntity: FavoriteMovieEntity) -> MovieModel {
+//    return MovieModel(
+//      id: favoriteEntity.id,
+//      title: favoriteEntity.title,
+//      overview: favoriteEntity.overview,
+//      posterPath: favoriteEntity.posterPath,
+//      releaseDate: favoriteEntity.releaseDate
+//    )
+//  }
   
   static func mapMovieFavoritesEntityToDomains(input favoriteEntities: [FavoriteMovieEntity]) -> [MovieModel] {
     return favoriteEntities.map { entity in

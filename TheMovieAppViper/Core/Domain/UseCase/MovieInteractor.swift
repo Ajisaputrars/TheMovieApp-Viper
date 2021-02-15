@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import Movie
 
 protocol MovieUseCase {
   func getMovies(withQuery query: String?) -> AnyPublisher<[MovieModel], Error>

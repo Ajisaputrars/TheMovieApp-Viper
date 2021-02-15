@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Core
+import Movie
 
 class SearchPageController: UIViewController {
   private lazy var searchPageView = SearchPageView(frame: self.view.frame)

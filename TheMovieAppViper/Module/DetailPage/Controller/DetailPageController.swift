@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Movie
 
 class DetailPageController: UIViewController {
   private lazy var detailPageView = DetailPageView(frame: self.view.frame)

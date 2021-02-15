@@ -7,6 +7,8 @@
 
 import Foundation
 import Combine
+import Movie
+import Core
 
 protocol RemoteDataSourceProtocol: class {
   func getMovies(withQuery query: String?) -> AnyPublisher<[MovieResultResponse], Error>

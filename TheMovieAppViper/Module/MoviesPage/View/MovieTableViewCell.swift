@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import Movie
 
 class MovieTableViewCell: UITableViewCell {
   
@@ -49,7 +50,11 @@ class MovieTableViewCell: UITableViewCell {
     
     let posterImageUrl = URL(string: "https://image.tmdb.org/t/p/w500/\(movie.posterPath)")
     movieImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-    self.movieImageView.sd_setImage(with: posterImageUrl, placeholderImage: UIImage(named: "placeholder"), completed: nil)
+    self.movieImageView.sd_setImage(
+      with: posterImageUrl,
+      placeholderImage: UIImage(named: "placeholder"),
+      completed: nil
+    )
   }
 
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Movie
 
 class FavoritePageController: UIViewController {
   private lazy var moviePageView = MoviePageView(frame: self.view.frame)

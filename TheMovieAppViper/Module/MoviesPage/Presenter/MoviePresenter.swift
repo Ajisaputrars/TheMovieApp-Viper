@@ -1,5 +1,6 @@
 import UIKit
 import Combine
+import Movie
 
 class MoviePresenter {
   private let router = MovieRouter()

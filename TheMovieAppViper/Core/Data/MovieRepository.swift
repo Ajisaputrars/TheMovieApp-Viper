@@ -7,6 +7,8 @@
 
 import Foundation
 import Combine
+import Movie
+import Core
 
 protocol MovieRepositoryProtocol {
   func getMovies(withQuery query: String?) -> AnyPublisher<[MovieModel], Error>
@@ -14,9 +16,9 @@ protocol MovieRepositoryProtocol {
 
 final class MovieRepository {
   private let remote: RemoteDataSource
-  private let locale: LocaleDataSource
+  private let locale: MovieLocaleDataSource
   
-  private init(locale: LocaleDataSource, remote: RemoteDataSource) {
+  private init(locale: MovieLocaleDataSource, remote: RemoteDataSource) {
     self.remote = remote
     self.locale = locale
   }
@@ -32,15 +34,15 @@ extension MovieRepository: MovieRepositoryProtocol {
       return self.remote.getMovies(withQuery: query).map { MovieMapper.mapMovieResultResponseToDomains(input: $0) }
         .eraseToAnyPublisher()
     } else {
-      return self.locale.getMovies().flatMap { result -> AnyPublisher<[MovieModel], Error> in
+      return self.locale.getAllResponse().flatMap { result -> AnyPublisher<[MovieModel], Error> in
         if result.isEmpty {
           return self.remote.getMovies().map { MovieMapper.mapMovieResultResponsesToEntities(input: $0) }
-            .flatMap { self.locale.addMoviesToLocalStorage(from: $0) }
+            .flatMap { self.locale.addToLocale(request: $0)}
             .filter { $0 }
-            .flatMap { _ in self.locale.getMovies().map { MovieMapper.mapMovieEntitiesToDomains(input: $0) }
+            .flatMap { _ in self.locale.getAllResponse().map { MovieMapper.mapMovieEntitiesToDomains(input: $0) }
             }.eraseToAnyPublisher()
         } else {
-          return self.locale.getMovies().map { MovieMapper.mapMovieEntitiesToDomains(input: $0) }
+          return self.locale.getAllResponse().map { MovieMapper.mapMovieEntitiesToDomains(input: $0) }
             .eraseToAnyPublisher()
         }
       }.eraseToAnyPublisher()

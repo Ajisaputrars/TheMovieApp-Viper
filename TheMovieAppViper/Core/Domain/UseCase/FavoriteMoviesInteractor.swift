@@ -7,6 +7,8 @@
 
 import Foundation
 import Combine
+import Core
+import Movie
 
 protocol FavoriteMovieUseCase {
   func getAllFavoriteMovie() -> AnyPublisher<[MovieModel], Error>

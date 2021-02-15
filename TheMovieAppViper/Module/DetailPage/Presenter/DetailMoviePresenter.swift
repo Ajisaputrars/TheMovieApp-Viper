@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import Movie
 
 class DetailMoviePresenter {
   private let detailUseCase: DetailMovielUseCase

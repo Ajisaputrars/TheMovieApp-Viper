@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import Movie
 
 class FavoritePresenter {
   private let favoriteUseCase: FavoriteMovieUseCase

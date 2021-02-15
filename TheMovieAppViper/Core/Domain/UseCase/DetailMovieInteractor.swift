@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import Movie
 
 protocol DetailMovielUseCase {
   func getMovie() -> MovieModel
