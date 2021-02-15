@@ -18,7 +18,7 @@ class TheMovieAppViperTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
+    func testDateFormatterUtility() throws {
       XCTAssertEqual(Utils.changeDateStringIntoFormattedString(withStringDate: "2020-01-01"), "01 Januari 2020") 
     }
 
