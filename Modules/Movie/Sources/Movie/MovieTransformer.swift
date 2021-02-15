@@ -1,17 +1,14 @@
 import Core
 import RealmSwift
 
-public struct MovieTransformer<MovieMapper: Mapper>: Mapper
-where
-  MovieMapper.Request == Any,
-  MovieMapper.Response == MovieResultResponse,
-  MovieMapper.Entity == MovieEntity,
-  MovieMapper.Domain == MovieModel
+public struct MovieTransformer: Mapper
 {
   public typealias Request = Any
   public typealias Response = [MovieResultResponse]
   public typealias Entity = [MovieEntity]
   public typealias Domain = [MovieModel]
+  
+  public init(){}
 
   public func transformResponseToEntity(request: Any?, response: [MovieResultResponse]) -> [MovieEntity] {
     return response.map { result in

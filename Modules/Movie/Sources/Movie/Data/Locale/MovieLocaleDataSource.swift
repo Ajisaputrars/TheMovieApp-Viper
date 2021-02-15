@@ -13,13 +13,10 @@ import Core
 public final class MovieLocaleDataSource {
   private let realm: Realm?
   
-  private init(realm: Realm?) {
+  public init(realm: Realm?) {
     self.realm = realm
   }
   
-  public static var shared: (Realm?) -> MovieLocaleDataSource = { realm in
-    return MovieLocaleDataSource(realm: realm)
-  }
 }
 
 extension MovieLocaleDataSource: LocaleDataSource {

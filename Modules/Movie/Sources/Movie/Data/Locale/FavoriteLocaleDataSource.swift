@@ -16,13 +16,13 @@ public final class FavoriteLocaleDataSource: LocaleDataSource {
   
   private let realm: Realm?
   
-  private init(realm: Realm?) {
+  public init(realm: Realm?) {
     self.realm = realm
   }
   
-  public static var shared: (Realm?) -> FavoriteLocaleDataSource = { realm in
-    return FavoriteLocaleDataSource(realm: realm)
-  }
+//  public static var shared: (Realm?) -> FavoriteLocaleDataSource = { realm in
+//    return FavoriteLocaleDataSource(realm: realm)
+//  }
 }
 
 extension FavoriteLocaleDataSource {

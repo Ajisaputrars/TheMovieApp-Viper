@@ -9,12 +9,15 @@ import Foundation
 import Combine
 import Core
 
-public final class RemoteDataSource {
-  private init() { }
-  public static let sharedInstance = RemoteDataSource()
+public final class MovieRemoteDataSource {
+  let request: Request
+  
+  public init(request: Request) {
+    self.request = request
+  }
 }
 
-extension RemoteDataSource: DataSource {
+extension MovieRemoteDataSource: DataSource {
   public typealias Request = String
   public typealias Response = [MovieResultResponse]
   

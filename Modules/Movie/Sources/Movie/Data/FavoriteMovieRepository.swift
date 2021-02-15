@@ -9,16 +9,18 @@ import Foundation
 import Combine
 import Core
 
-public final class FavoriteMovieRepository {
-  private let favoriteDataSource: FavoriteLocaleDataSource
+public final class FavoriteMovieRepository<
+  LocaleFavoriteMovieDataSource: LocaleDataSource
+> where
+  LocaleFavoriteMovieDataSource.Request == MovieModel,
+  LocaleFavoriteMovieDataSource.Response == [FavoriteMovieEntity]
+{
+  private let favoriteDataSource: LocaleFavoriteMovieDataSource
   
-  private init(favoriteDataSource: FavoriteLocaleDataSource) {
+  public init(favoriteDataSource: LocaleFavoriteMovieDataSource) {
     self.favoriteDataSource = favoriteDataSource
   }
   
-  public static let shared = { dataSource in
-    return FavoriteMovieRepository(favoriteDataSource: dataSource)
-  }
 }
 
 extension FavoriteMovieRepository: LocaleDataSource {
