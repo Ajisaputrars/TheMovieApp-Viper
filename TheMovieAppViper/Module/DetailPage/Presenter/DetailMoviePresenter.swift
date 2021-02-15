@@ -8,11 +8,18 @@
 import Foundation
 import Combine
 import Movie
+import Core
 
-class DetailMoviePresenter {
-  private let detailUseCase: DetailMovielUseCase
-  private let favoriteUseCase: FavoriteMovieUseCase
-  private var movie: MovieModel
+class DetailMoviePresenter<GetFavoriteUseCase: UseCase, AddFavoriteUseCase: UseCase, DeleteFavoriteUseCase: UseCase>
+where
+  GetFavoriteUseCase.Request == MovieModel, GetFavoriteUseCase.Response == Bool,
+  AddFavoriteUseCase.Request == MovieModel, AddFavoriteUseCase.Response == Bool,
+  DeleteFavoriteUseCase.Request == MovieModel, DeleteFavoriteUseCase.Response == Bool
+{
+  private let getFavoriteUseCase: GetFavoriteUseCase
+  private let addFavoriteUseCase: AddFavoriteUseCase
+  private let deleteFavoriteUseCase: DeleteFavoriteUseCase
+  private let movie: MovieModel
   private var favoriteMovie: MovieModel!
   private var cancellables: Set<AnyCancellable> = []
   private var isInFavorite = false
@@ -24,15 +31,16 @@ class DetailMoviePresenter {
   }
   weak var loadFavoriteMovieDelegate: FavoriteMovieDelegate?
   
-  init(detailUseCase: DetailMovielUseCase, favoriteUseCase: FavoriteMovieUseCase) {
-    self.detailUseCase = detailUseCase
-    self.favoriteUseCase = favoriteUseCase
-    self.movie = detailUseCase.getMovie()
+  init(getFavoriteUseCase: GetFavoriteUseCase, addFavoriteUseCase: AddFavoriteUseCase, deleteFavoriteUseCase: DeleteFavoriteUseCase, movie: MovieModel) {
+    self.getFavoriteUseCase = getFavoriteUseCase
+    self.addFavoriteUseCase = addFavoriteUseCase
+    self.deleteFavoriteUseCase = deleteFavoriteUseCase
+    self.movie = movie
     self.loadFavoriteMovie()
   }
   
   private func loadFavoriteMovie() {
-    favoriteUseCase.getFavoriteMovie(movie: movie)
+    getFavoriteUseCase.execute(request: movie)
       .receive(on: RunLoop.main)
       .sink { completion in
         switch completion {
@@ -50,7 +58,7 @@ class DetailMoviePresenter {
   }
   
   func addMovieToFavorite() {
-    favoriteUseCase.addFavoriteMovie(movie: movie)
+    addFavoriteUseCase.execute(request: movie)
       .receive(on: RunLoop.main)
       .sink { completion in
         switch completion {
@@ -64,7 +72,7 @@ class DetailMoviePresenter {
   
   func deleteMovieFromFavorite() {
     if isInFavorite {
-      favoriteUseCase.deleteFavoriteMovie(movie: movie)
+      deleteFavoriteUseCase.execute(request: movie)
         .receive(on: RunLoop.main)
         .sink { completion in
           switch completion {

@@ -7,13 +7,14 @@
 
 import UIKit
 import Movie
+import Core
 
 class MoviePageController: UIViewController {
   private lazy var moviePageView = MoviePageView(frame: self.view.frame)
   private var movies: [MovieModel] = []
-  private let moviePresenter: MoviePresenter
+  private let moviePresenter: MoviePresenter<String, MovieModel, Interactor<String, [MovieModel], GetMoviesRepository<MovieLocaleDataSource, MovieRemoteDataSource>>>
   
-  init(presenter: MoviePresenter) {
+  init(presenter: MoviePresenter<String, MovieModel, Interactor<String, [MovieModel], GetMoviesRepository<MovieLocaleDataSource, MovieRemoteDataSource>>>) {
     self.moviePresenter = presenter
     super.init(nibName: nil, bundle: nil)
   }

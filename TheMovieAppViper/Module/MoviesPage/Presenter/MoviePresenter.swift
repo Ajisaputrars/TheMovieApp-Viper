@@ -1,19 +1,20 @@
 import UIKit
 import Combine
 import Movie
+import Core
 
-class MoviePresenter {
-  private let movieUseCase: MovieUseCase
+class MoviePresenter<Request, Response, Interactor: UseCase> where Interactor.Request == Request, Interactor.Response == [MovieModel]  {
+  private let movieUseCase: Interactor
   private var cancellables: Set<AnyCancellable> = []
   weak var loadingMealDelegate: LoadingMovieDelegate?
 
-  init(movieUseCase: MovieUseCase) {
+  init(movieUseCase: Interactor) {
     self.movieUseCase = movieUseCase
   }
   
-  func getMovies(withQuery query: String? = nil) {
+  func getMovies(withQuery query: Request? = nil) {
     self.loadingMealDelegate?.loadingView(isLoading: true)
-    self.movieUseCase.getMovies(withQuery: query)
+    self.movieUseCase.execute(request: query)
       .receive(on: RunLoop.main)
       .sink(receiveCompletion: { completion in
         self.loadingMealDelegate?.loadingView(isLoading: false)

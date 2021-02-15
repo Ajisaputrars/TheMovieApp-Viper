@@ -20,7 +20,7 @@ final class Injection {
 //    return GetMoviesRepository.shared(locale, remote)
 //  }
   
-  func provideMovieUseCase<U: UseCase>() -> U where U.Request == Any, U.Response == [MovieModel] {
+  func provideMovieUseCase<U: UseCase>() -> U where U.Request == String, U.Response == [MovieModel] {
     let locale = MovieLocaleDataSource(realm: realm)
     let remote = MovieRemoteDataSource(request: Utils.getApiKey())
     let repository = GetMoviesRepository(locale: locale, remote: remote)
@@ -34,25 +34,25 @@ final class Injection {
 //    return FavoriteMovieRepository.shared(locale)
 //  }
   
-  func provideGetAllFavoriteMovieUseCase<U: UseCase>() -> U where U.Request == Any, U.Response == [MovieModel] {
+  func provideGetAllFavoriteMovieUseCase<U: UseCase>() -> U where U.Request == MovieModel, U.Response == [MovieModel] {
     let locale = FavoriteLocaleDataSource(realm: realm)
     let repository = GetAllFavoritesRepository(favoriteDataSource: locale)
     return Interactor(repository: repository) as! U
   }
   
-  func provideGetFavoriteMovieUseCase<U: UseCase>() -> U where U.Request == Any, U.Response == [MovieModel] {
+  func provideGetFavoriteMovieUseCase<U: UseCase>() -> U where U.Request == MovieModel, U.Response == Bool{
     let locale = FavoriteLocaleDataSource(realm: realm)
     let repository = GetFavoriteRepository(favoriteDataSource: locale)
     return Interactor(repository: repository) as! U
   }
   
-  func provideAddFavoriteMovieUseCase<U: UseCase>() -> U where U.Request == Any, U.Response == [MovieModel] {
+  func provideAddFavoriteMovieUseCase<U: UseCase>() -> U where U.Request == MovieModel, U.Response == Bool {
     let locale = FavoriteLocaleDataSource(realm: realm)
     let repository = AddMovieToFavoriteRepository(favoriteDataSource: locale)
     return Interactor(repository: repository) as! U
   }
   
-  func provideDeleteFavoriteMovieUseCase<U: UseCase>() -> U where U.Request == Any, U.Response == [MovieModel] {
+  func provideDeleteFavoriteMovieUseCase<U: UseCase>() -> U where U.Request == MovieModel, U.Response == Bool {
     let locale = FavoriteLocaleDataSource(realm: realm)
     let repository = DeleteMovieFromFavoriteRepository(favoriteDataSource: locale)
     return Interactor(repository: repository) as! U

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Core
+import Movie
 
 class MainTabBarController: UITabBarController {
   
@@ -17,7 +19,7 @@ class MainTabBarController: UITabBarController {
     
     let moviePageController = MoviePageController(
       presenter: MoviePresenter(
-        movieUseCase: Injection.init().provideMovieUseCase()
+        movieUseCase: Injection().provideMovieUseCase()
       )
     )
     let moviePageNavigationController = UINavigationController(rootViewController: moviePageController)
@@ -35,7 +37,7 @@ class MainTabBarController: UITabBarController {
 
     let favoritePageController = FavoritePageController(
       presenter: FavoritePresenter(
-        favoriteUseCase: Injection.init().provideFavoriteMovieUseCase()
+        favoriteUseCase: Injection().provideGetAllFavoriteMovieUseCase()
       )
     )
     let favoritePageNavigationController = UINavigationController(rootViewController: favoritePageController)

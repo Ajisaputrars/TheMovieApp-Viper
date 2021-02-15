@@ -7,14 +7,58 @@
 
 import UIKit
 import Movie
+import Core
 
 class DetailPageController: UIViewController {
   private lazy var detailPageView = DetailPageView(frame: self.view.frame)
-  private let presenter: DetailMoviePresenter
+  private let presenter: DetailMoviePresenter<
+    Interactor<
+      MovieModel,
+      Bool,
+      GetFavoriteRepository<
+        FavoriteLocaleDataSource
+      >
+    >,
+    Interactor<
+      MovieModel,
+      Bool,
+      AddMovieToFavoriteRepository<
+        FavoriteLocaleDataSource
+      >
+    >,
+    Interactor<
+      MovieModel,
+      Bool,
+      DeleteMovieFromFavoriteRepository<
+        FavoriteLocaleDataSource
+      >
+    >>
   private var favoriteButton: UIBarButtonItem!
   private var isFavorite = false
   
-  init(presenter: DetailMoviePresenter) {
+  init(presenter: DetailMoviePresenter<
+       Interactor<
+         MovieModel,
+         Bool,
+         GetFavoriteRepository<
+           FavoriteLocaleDataSource
+         >
+       >,
+       Interactor<
+         MovieModel,
+         Bool,
+         AddMovieToFavoriteRepository<
+           FavoriteLocaleDataSource
+         >
+       >,
+       Interactor<
+         MovieModel,
+         Bool,
+         DeleteMovieFromFavoriteRepository<
+           FavoriteLocaleDataSource
+         >
+       >>) {
+    
     self.presenter = presenter
     super.init(nibName: nil, bundle: nil)
   }

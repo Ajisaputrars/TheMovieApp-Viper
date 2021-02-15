@@ -7,13 +7,14 @@
 
 import UIKit
 import Movie
+import Core
 
 class FavoritePageController: UIViewController {
   private lazy var moviePageView = MoviePageView(frame: self.view.frame)
-  var presenter: FavoritePresenter!
+  var presenter: FavoritePresenter<MovieModel, MovieModel, Interactor<MovieModel, [MovieModel], GetAllFavoritesRepository<FavoriteLocaleDataSource>>>
   private var favoriteMovies: [MovieModel] = []
   
-  init(presenter: FavoritePresenter) {
+  init(presenter: FavoritePresenter<MovieModel, MovieModel, Interactor<MovieModel, [MovieModel], GetAllFavoritesRepository<FavoriteLocaleDataSource>>>) {
     self.presenter = presenter
     super.init(nibName: nil, bundle: nil)
   }

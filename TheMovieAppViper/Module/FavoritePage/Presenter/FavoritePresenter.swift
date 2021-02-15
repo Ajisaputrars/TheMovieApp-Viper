@@ -8,20 +8,21 @@
 import UIKit
 import Combine
 import Movie
+import Core
 
-class FavoritePresenter {
-  private let favoriteUseCase: FavoriteMovieUseCase
+class FavoritePresenter<Request, Response, Interactor: UseCase> where Interactor.Request == Request, Interactor.Response == [MovieModel] {
+  private let favoriteUseCase: Interactor
   private var cancellables: Set<AnyCancellable> = []
   weak var loadingFavoriteDelegate: LoadingMovieDelegate?
   private var favoriteMovies: [MovieModel] = []
 
-  init(favoriteUseCase: FavoriteMovieUseCase) {
+  init(favoriteUseCase: Interactor) {
     self.favoriteUseCase = favoriteUseCase
   }
   
   func getFavoriteMovies() {
     self.loadingFavoriteDelegate?.loadingView(isLoading: true)
-    self.favoriteUseCase.getAllFavoriteMovie()
+    self.favoriteUseCase.execute(request: nil)
       .receive(on: RunLoop.main)
       .sink(receiveCompletion: { completion in
         self.loadingFavoriteDelegate?.loadingView(isLoading: false)

@@ -12,9 +12,6 @@
 		D707302F25CB21B2003E7C0D /* DetailMoviePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D707302E25CB21B2003E7C0D /* DetailMoviePresenter.swift */; };
 		D707303725CB29EA003E7C0D /* ApiKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = D707303625CB29EA003E7C0D /* ApiKey.plist */; };
 		D71875A825CEABF100FFC437 /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71875A725CEABF100FFC437 /* FavoritePresenter.swift */; };
-		D750EA9725C9595300F854A7 /* MovieInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D750EA9625C9595300F854A7 /* MovieInteractor.swift */; };
-		D750EA9C25C9595E00F854A7 /* DetailMovieInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D750EA9B25C9595E00F854A7 /* DetailMovieInteractor.swift */; };
-		D750EAA125C9596E00F854A7 /* FavoriteMoviesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D750EAA025C9596E00F854A7 /* FavoriteMoviesInteractor.swift */; };
 		D750EAA625C95A5F00F854A7 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D750EAA525C95A5F00F854A7 /* Injection.swift */; };
 		D750EAD025C95E0B00F854A7 /* SampleMovieResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = D750EACF25C95E0B00F854A7 /* SampleMovieResponse.json */; };
 		D750EAEE25C9AEA700F854A7 /* MovieRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D750EAED25C9AEA700F854A7 /* MovieRouter.swift */; };
@@ -73,9 +70,6 @@
 		D707302E25CB21B2003E7C0D /* DetailMoviePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMoviePresenter.swift; sourceTree = "<group>"; };
 		D707303625CB29EA003E7C0D /* ApiKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiKey.plist; sourceTree = "<group>"; };
 		D71875A725CEABF100FFC437 /* FavoritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenter.swift; sourceTree = "<group>"; };
-		D750EA9625C9595300F854A7 /* MovieInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInteractor.swift; sourceTree = "<group>"; };
-		D750EA9B25C9595E00F854A7 /* DetailMovieInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMovieInteractor.swift; sourceTree = "<group>"; };
-		D750EAA025C9596E00F854A7 /* FavoriteMoviesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesInteractor.swift; sourceTree = "<group>"; };
 		D750EAA525C95A5F00F854A7 /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
 		D750EACF25C95E0B00F854A7 /* SampleMovieResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SampleMovieResponse.json; sourceTree = "<group>"; };
 		D750EAED25C9AEA700F854A7 /* MovieRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRouter.swift; sourceTree = "<group>"; };
@@ -352,9 +346,6 @@
 		D750EA9425C9584000F854A7 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				D750EA9625C9595300F854A7 /* MovieInteractor.swift */,
-				D750EA9B25C9595E00F854A7 /* DetailMovieInteractor.swift */,
-				D750EAA025C9596E00F854A7 /* FavoriteMoviesInteractor.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -686,7 +677,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n${PODS_ROOT}/SwiftLint/swiftlint\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -705,16 +696,13 @@
 				D71875A825CEABF100FFC437 /* FavoritePresenter.swift in Sources */,
 				D769C04725C4684E00655CD5 /* TheMovieAppViper.xcdatamodeld in Sources */,
 				D75D8C8D25C73D7400DD6907 /* MainTabBarController.swift in Sources */,
-				D750EA9C25C9595E00F854A7 /* DetailMovieInteractor.swift in Sources */,
 				D769C09425C4879B00655CD5 /* MovieTableViewCell.swift in Sources */,
 				D769C08125C47E7400655CD5 /* MoviePageView.swift in Sources */,
 				D7569E1525C871E300CE7819 /* DetailPageView.swift in Sources */,
-				D750EAA125C9596E00F854A7 /* FavoriteMoviesInteractor.swift in Sources */,
 				D7569E0425C810FC00CE7819 /* ProfilePageView.swift in Sources */,
 				D769C03D25C4684E00655CD5 /* AppDelegate.swift in Sources */,
 				D75D8C9225C73D9000DD6907 /* ProfilePageController.swift in Sources */,
 				D7ADB4EC25CEB72700EF303C /* FavoriteRouter.swift in Sources */,
-				D750EA9725C9595300F854A7 /* MovieInteractor.swift in Sources */,
 				D750EAA625C95A5F00F854A7 /* Injection.swift in Sources */,
 				D769C03F25C4684E00655CD5 /* SceneDelegate.swift in Sources */,
 				D769C08C25C4822E00655CD5 /* DetailPageController.swift in Sources */,
