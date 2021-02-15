@@ -1,7 +1,7 @@
 language: swift
 osx_image: xcode12.2 
 xcode_project: TheMovieAppViper.xcworkspace 
-xcode_destination: platform=iOS Simulator,OS=13.5,name=iPhone 11 Pro
+xcode_destination: platform=iOS Simulator,OS=13.0,name=iPhone 11 Pro
 
 matrix:
   include:
