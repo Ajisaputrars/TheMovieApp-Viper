@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		990C635C9DDDA9BCBC0B7FD7 /* Pods_TheMovieAppViper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A97ADCF241F39F569D0FF8E7 /* Pods_TheMovieAppViper.framework */; };
+		9A15F494EDC79B21C1907DE4 /* Pods_TheMovieAppViperTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5196DD9F0B22E9F0B73B5AAE /* Pods_TheMovieAppViperTests.framework */; };
 		D707303725CB29EA003E7C0D /* ApiKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = D707303625CB29EA003E7C0D /* ApiKey.plist */; };
 		D750EAA625C95A5F00F854A7 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D750EAA525C95A5F00F854A7 /* Injection.swift */; };
 		D750EAD025C95E0B00F854A7 /* SampleMovieResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = D750EACF25C95E0B00F854A7 /* SampleMovieResponse.json */; };
@@ -30,10 +31,10 @@
 		D769C09425C4879B00655CD5 /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D769C09325C4879B00655CD5 /* MovieTableViewCell.swift */; };
 		D79C7D4525D3D21800E504E4 /* SearchPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C7D4425D3D21800E504E4 /* SearchPageController.swift */; };
 		D79C7D4D25D3D3A700E504E4 /* SearchPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C7D4C25D3D3A700E504E4 /* SearchPageView.swift */; };
-		D7C828B925D932F800849D43 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D7C828B825D932F800849D43 /* Realm */; };
-		D7C828BB25D932F800849D43 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D7C828BA25D932F800849D43 /* RealmSwift */; };
-		D7C828D325D936FB00849D43 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = D7C828D225D936FB00849D43 /* Core */; };
-		D7C828D525D936FB00849D43 /* Movie in Frameworks */ = {isa = PBXBuildFile; productRef = D7C828D425D936FB00849D43 /* Movie */; };
+		D7C828B925D932F800849D43 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = D7C828B825D932F800849D43 /* SwiftPackageProductDependency */; };
+		D7C828BB25D932F800849D43 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = D7C828BA25D932F800849D43 /* SwiftPackageProductDependency */; };
+		D7C828D325D936FB00849D43 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = D7C828D225D936FB00849D43 /* SwiftPackageProductDependency */; };
+		D7C828D525D936FB00849D43 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = D7C828D425D936FB00849D43 /* SwiftPackageProductDependency */; };
 		D7EA37F125C7477900D81811 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = D7EA37F025C7477900D81811 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A15F494EDC79B21C1907DE4 /* Pods_TheMovieAppViperTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,10 +103,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				990C635C9DDDA9BCBC0B7FD7 /* Pods_TheMovieAppViper.framework in Frameworks */,
-				D7C828D325D936FB00849D43 /* Core in Frameworks */,
-				D7C828B925D932F800849D43 /* Realm in Frameworks */,
-				D7C828BB25D932F800849D43 /* RealmSwift in Frameworks */,
-				D7C828D525D936FB00849D43 /* Movie in Frameworks */,
+				D7C828D325D936FB00849D43 /* BuildFile in Frameworks */,
+				D7C828B925D932F800849D43 /* BuildFile in Frameworks */,
+				D7C828BB25D932F800849D43 /* BuildFile in Frameworks */,
+				D7C828D525D936FB00849D43 /* BuildFile in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +388,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D7661A6825DB138600BF7AAA /* Build configuration list for PBXNativeTarget "TheMovieAppViperTests" */;
 			buildPhases = (
+				91CA494C00CA5FED0340FB44 /* [CP] Check Pods Manifest.lock */,
 				D7661A5D25DB138600BF7AAA /* Sources */,
 				D7661A5E25DB138600BF7AAA /* Frameworks */,
 				D7661A5F25DB138600BF7AAA /* Resources */,
@@ -417,10 +420,10 @@
 			);
 			name = TheMovieAppViper;
 			packageProductDependencies = (
-				D7C828B825D932F800849D43 /* Realm */,
-				D7C828BA25D932F800849D43 /* RealmSwift */,
-				D7C828D225D936FB00849D43 /* Core */,
-				D7C828D425D936FB00849D43 /* Movie */,
+				D7C828B825D932F800849D43 /* SwiftPackageProductDependency */,
+				D7C828BA25D932F800849D43 /* SwiftPackageProductDependency */,
+				D7C828D225D936FB00849D43 /* SwiftPackageProductDependency */,
+				D7C828D425D936FB00849D43 /* SwiftPackageProductDependency */,
 			);
 			productName = TheMovieAppViper;
 			productReference = D769C03925C4684E00655CD5 /* TheMovieAppViper.app */;
@@ -454,7 +457,7 @@
 			);
 			mainGroup = D769C03025C4684E00655CD5;
 			packageReferences = (
-				D750EA6025C9309700F854A7 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				D750EA6025C9309700F854A7 /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = D769C03A25C4684E00655CD5 /* Products */;
 			projectDirPath = "";
@@ -504,6 +507,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TheMovieAppViper/Pods-TheMovieAppViper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		91CA494C00CA5FED0340FB44 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TheMovieAppViperTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A1C3C2CB4683BC2E6636CD65 /* [CP] Check Pods Manifest.lock */ = {
@@ -604,6 +629,7 @@
 /* Begin XCBuildConfiguration section */
 		D7661A6925DB138600BF7AAA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A538DBBF23F55DA6578EEA0B /* Pods-TheMovieAppViperTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -624,6 +650,7 @@
 		};
 		D7661A6A25DB138600BF7AAA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95FF50CA587ED810A60D5AE4 /* Pods-TheMovieAppViperTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -833,7 +860,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D750EA6025C9309700F854A7 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+		D750EA6025C9309700F854A7 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa";
 			requirement = {
@@ -844,21 +871,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D7C828B825D932F800849D43 /* Realm */ = {
+		D7C828B825D932F800849D43 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D750EA6025C9309700F854A7 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			package = D750EA6025C9309700F854A7 /* RemoteSwiftPackageReference */;
 			productName = Realm;
 		};
-		D7C828BA25D932F800849D43 /* RealmSwift */ = {
+		D7C828BA25D932F800849D43 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D750EA6025C9309700F854A7 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			package = D750EA6025C9309700F854A7 /* RemoteSwiftPackageReference */;
 			productName = RealmSwift;
 		};
-		D7C828D225D936FB00849D43 /* Core */ = {
+		D7C828D225D936FB00849D43 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Core;
 		};
-		D7C828D425D936FB00849D43 /* Movie */ = {
+		D7C828D425D936FB00849D43 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Movie;
 		};

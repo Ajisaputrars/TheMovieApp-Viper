@@ -15,8 +15,4 @@ target 'TheMovieAppViper' do
     # Pods for testing
   end
 
-  target 'TheMovieAppViperUITests' do
-    # Pods for testing
-  end
-
 end
