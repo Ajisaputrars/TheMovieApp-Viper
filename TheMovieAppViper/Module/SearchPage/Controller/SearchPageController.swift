@@ -48,7 +48,6 @@ extension SearchPageController: UISearchBarDelegate {
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     if searchBar.text == nil || searchBar.text == "" {
       searchBar.perform(#selector(self.resignFirstResponder), with: nil, afterDelay: 0)
-//      movies.removeAll()
       searchPageView.setupNoDataState()
     }
   }

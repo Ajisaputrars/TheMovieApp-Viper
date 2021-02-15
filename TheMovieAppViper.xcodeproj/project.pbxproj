@@ -137,26 +137,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D707302D25CB21A2003E7C0D /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
 		D70E487D25CF064B008AC70E /* Router */ = {
 			isa = PBXGroup;
 			children = (
 				D7661A4D25DB10C900BF7AAA /* FavoriteRouter.swift */,
 			);
 			path = Router;
-			sourceTree = "<group>";
-		};
-		D71875A625CEABE000FFC437 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presenter;
 			sourceTree = "<group>";
 		};
 		D750EA6A25C9556900F854A7 /* Module */ = {
@@ -200,7 +186,6 @@
 		D750EA7725C9563B00F854A7 /* MoviesPage */ = {
 			isa = PBXGroup;
 			children = (
-				D750EA7D25C9568800F854A7 /* Presenter */,
 				D750EA7E25C9568D00F854A7 /* Controller */,
 				D750EA7C25C9568200F854A7 /* View */,
 				D750EA7B25C9567000F854A7 /* Router */,
@@ -211,7 +196,6 @@
 		D750EA7825C9564C00F854A7 /* DetailPage */ = {
 			isa = PBXGroup;
 			children = (
-				D707302D25CB21A2003E7C0D /* Presenter */,
 				D750EA8125C956FF00F854A7 /* Controller */,
 				D750EA8025C956E500F854A7 /* View */,
 			);
@@ -221,7 +205,6 @@
 		D750EA7925C9565500F854A7 /* FavoritePage */ = {
 			isa = PBXGroup;
 			children = (
-				D71875A625CEABE000FFC437 /* Presenter */,
 				D750EA8725C9573800F854A7 /* Controller */,
 				D70E487D25CF064B008AC70E /* Router */,
 			);
@@ -252,13 +235,6 @@
 				D769C09325C4879B00655CD5 /* MovieTableViewCell.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		D750EA7D25C9568800F854A7 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Presenter;
 			sourceTree = "<group>";
 		};
 		D750EA7E25C9568D00F854A7 /* Controller */ = {
@@ -333,6 +309,22 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		D7661A5225DB123000BF7AAA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D79C7D4C25D3D3A700E504E4 /* SearchPageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D7661A5325DB123700BF7AAA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D79C7D4425D3D21800E504E4 /* SearchPageController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		D769C03025C4684E00655CD5 = {
 			isa = PBXGroup;
 			children = (
@@ -375,8 +367,8 @@
 		D79C7D4325D3D1F100E504E4 /* SearchPage */ = {
 			isa = PBXGroup;
 			children = (
-				D79C7D4425D3D21800E504E4 /* SearchPageController.swift */,
-				D79C7D4C25D3D3A700E504E4 /* SearchPageView.swift */,
+				D7661A5325DB123700BF7AAA /* Controller */,
+				D7661A5225DB123000BF7AAA /* View */,
 			);
 			path = SearchPage;
 			sourceTree = "<group>";
