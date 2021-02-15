@@ -10,19 +10,19 @@ import Combine
 import Movie
 import Core
 
-protocol MovieUseCase {
-  func getMovies(withQuery query: String?) -> AnyPublisher<[MovieModel], Error>
-}
+//protocol MovieUseCase {
+//  func getMovies(withQuery query: String?) -> AnyPublisher<[MovieModel], Error>
+//}
+//
+//class MovieInteractor: MovieUseCase {
+//  private let repository: GetMoviesRepository
+//
+//  required init(repository: GetMoviesRepository) {
+//    self.repository = repository
+//  }
+//
+//  func getMovies(withQuery query: String? = nil) -> AnyPublisher<[MovieModel], Error> {
+//    return repository.execute(request: query)
+//  }
 
-class MovieInteractor: MovieUseCase {
-  private let repository: GetMoviesRepository
-  
-  required init(repository: GetMoviesRepository) {
-    self.repository = repository
-  }
-  
-  func getMovies(withQuery query: String? = nil) -> AnyPublisher<[MovieModel], Error> {
-    return repository.execute(request: query)
-  }
-
-}
+//}
