@@ -8,18 +8,19 @@
 import Foundation
 import RealmSwift
 import Movie
+import Core
 
 final class Injection {
-  private func provideMovieRepository() -> MovieRepository {
+  private func provideMovieRepository() -> GetMoviesRepository {
     let realm = try? Realm()
     let locale = MovieLocaleDataSource.shared(realm)
     let remote = RemoteDataSource.sharedInstance
-    return MovieRepository.shared(locale, remote)
+    return GetMoviesRepository.shared(locale, remote)
   }
   
-  private func provideFavoriteMovieRepository() -> FavoriteMovieRepositoryProtocol {
+  private func provideFavoriteMovieRepository() -> FavoriteMovieRepository {
     let realm = try? Realm()
-    let locale = FavoriteDataSource.shared(realm)
+    let locale = FavoriteLocaleDataSource.shared(realm)
     return FavoriteMovieRepository.shared(locale)
   }
   

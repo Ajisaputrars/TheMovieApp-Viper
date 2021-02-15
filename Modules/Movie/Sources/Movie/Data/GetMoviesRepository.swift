@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import Core
 
-public final class MovieRepository {
+public final class GetMoviesRepository {
   private let remote: RemoteDataSource
   private let locale: MovieLocaleDataSource
   
@@ -19,11 +19,11 @@ public final class MovieRepository {
   }
   
   public static let shared = { localeRepo, remoteRepo in
-    return MovieRepository(locale: localeRepo, remote: remoteRepo)
+    return GetMoviesRepository(locale: localeRepo, remote: remoteRepo)
   }
 }
 
-extension MovieRepository: DataSource {
+extension GetMoviesRepository: DataSource {
   public typealias Request = String
   public typealias Response = [MovieModel]
   

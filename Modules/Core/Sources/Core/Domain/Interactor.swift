@@ -16,7 +16,7 @@ where R.Request == Request, R.Response == Response {
         _repository = repository
     }
     
-    public func execute(request: Request?, updatingDatabaseTo favorite: Bool?) -> AnyPublisher<Response, Error> {
-      _repository.execute(request: request, updatingDatabaseTo: favorite)
+    public func execute(request: Request?) -> AnyPublisher<Response, Error> {
+      _repository.execute(request: request)
     }
 }

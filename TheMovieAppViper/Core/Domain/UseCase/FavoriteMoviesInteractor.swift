@@ -19,24 +19,24 @@ protocol FavoriteMovieUseCase {
 
 class FavoriteMovieInteractor: FavoriteMovieUseCase {
   func getAllFavoriteMovie() -> AnyPublisher<[MovieModel], Error> {
-    repository.getAllFavoriteMovies()
+    repository.getAllResponse()
   }
   
-  private let repository: FavoriteMovieRepositoryProtocol
+  private let repository: FavoriteMovieRepository
 
-  required init(repository: FavoriteMovieRepositoryProtocol) {
+  required init(repository: FavoriteMovieRepository) {
     self.repository = repository
   }
   
   func getFavoriteMovie(movie: MovieModel) -> AnyPublisher<Bool, Error> {
-    repository.getFavoriteMovies(movie: movie)
+    repository.getResponse(request: movie)
   }
   
   func addFavoriteMovie(movie: MovieModel) -> AnyPublisher<Bool, Error> {
-    repository.addFavoriteMovie(movie: movie)
+    repository.addToLocale(request: movie)
   }
   
   func deleteFavoriteMovie(movie: MovieModel) -> AnyPublisher<Bool, Error> {
-    repository.deleteFavoriteMovie(movie: movie)
+    repository.deleteFromLocale(request: movie)
   }
 }

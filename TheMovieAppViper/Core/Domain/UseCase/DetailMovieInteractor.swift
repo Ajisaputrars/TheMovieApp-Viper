@@ -14,10 +14,10 @@ protocol DetailMovielUseCase {
 }
 
 class DetailMovieInteractor: DetailMovielUseCase {
-  private let repository: FavoriteMovieRepositoryProtocol
+  private let repository: FavoriteMovieRepository
   private let movie: MovieModel
 
-  required init(repository: FavoriteMovieRepositoryProtocol, movie: MovieModel) {
+  required init(repository: FavoriteMovieRepository, movie: MovieModel) {
     self.repository = repository
     self.movie = movie
   }

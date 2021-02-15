@@ -15,9 +15,9 @@ protocol MovieUseCase {
 }
 
 class MovieInteractor: MovieUseCase {
-  private let repository: MovieRepository
+  private let repository: GetMoviesRepository
   
-  required init(repository: MovieRepository) {
+  required init(repository: GetMoviesRepository) {
     self.repository = repository
   }
   

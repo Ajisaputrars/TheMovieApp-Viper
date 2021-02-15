@@ -7,7 +7,7 @@
 
 import Combine
 
-public protocol LocaleDataSourceProtocol {
+public protocol LocaleDataSource {
   associatedtype Request
   associatedtype Response
   

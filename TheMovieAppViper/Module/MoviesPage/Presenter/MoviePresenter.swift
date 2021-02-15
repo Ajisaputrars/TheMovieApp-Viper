@@ -3,7 +3,6 @@ import Combine
 import Movie
 
 class MoviePresenter {
-  private let router = MovieRouter()
   private let movieUseCase: MovieUseCase
   private var cancellables: Set<AnyCancellable> = []
   weak var loadingMealDelegate: LoadingMovieDelegate?
@@ -31,7 +30,7 @@ class MoviePresenter {
   }
   
   func goToDetailPage(from controller: UIViewController, withMovieModel movie: MovieModel) {
-    self.router.goToDetailPage(from: controller, withMovieModel: movie)
+    MovieRouter().goToDetailPage(from: controller, withMovieModel: movie)
   }
 }
 

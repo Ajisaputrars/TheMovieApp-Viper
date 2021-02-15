@@ -14,7 +14,6 @@ class FavoritePresenter {
   private var cancellables: Set<AnyCancellable> = []
   weak var loadingFavoriteDelegate: LoadingMovieDelegate?
   private var favoriteMovies: [MovieModel] = []
-  private var router = FavoriteRouter()
 
   init(favoriteUseCase: FavoriteMovieUseCase) {
     self.favoriteUseCase = favoriteUseCase
@@ -43,6 +42,6 @@ class FavoritePresenter {
   }
   
   func goToDetailPage(from controller: UIViewController, withMovieModel movie: MovieModel) {
-    self.router.goToDetailPage(from: controller, withMovieModel: movie)
+    FavoriteRouter().goToDetailPage(from: controller, withMovieModel: movie)
   }
 }

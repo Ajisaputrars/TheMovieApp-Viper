@@ -10,7 +10,7 @@ import Combine
 import RealmSwift
 import Core
 
-public final class FavoriteLocaleDataSource: LocaleDataSourceProtocol {
+public final class FavoriteLocaleDataSource: LocaleDataSource {
   public typealias Request = MovieModel
   public typealias Response = [FavoriteMovieEntity]
   

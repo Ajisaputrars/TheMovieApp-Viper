@@ -22,7 +22,7 @@ public final class MovieLocaleDataSource {
   }
 }
 
-extension MovieLocaleDataSource: LocaleDataSourceProtocol {
+extension MovieLocaleDataSource: LocaleDataSource {
   public typealias Request = [MovieEntity]
   public typealias Response = [MovieEntity]
   
@@ -69,40 +69,5 @@ extension MovieLocaleDataSource: LocaleDataSourceProtocol {
   public func getResponse(request: [MovieEntity]) -> AnyPublisher<Bool, Error> {
     fatalError()
   }
-  
-//  public func getMovies() -> AnyPublisher<[MovieEntity], Error> {
-//    return Future<[MovieEntity], Error> { completion in
-//      if let realm = self.realm {
-//        let movies: Results<MovieEntity> = {
-//           realm.objects(MovieEntity.self)
-//            .sorted(byKeyPath: "title", ascending: true)
-//        }()
-//        let moviesArray = movies.toArray(ofType: MovieEntity.self)
-//        completion(.success(moviesArray))
-//      } else {
-//        completion(.failure(DatabaseError.invalidInstance))
-//      }
-//    }.eraseToAnyPublisher()
-//  }
-  
-//  public func addMoviesToLocalStorage(from movies: [MovieEntity]) -> AnyPublisher<Bool, Error> {
-//    return Future<Bool, Error> { completion in
-//      DispatchQueue.main.async {
-//        if let realm = self.realm {
-//          do {
-//            try realm.write {
-//              for movie in movies {
-//                realm.add(movie, update: .all)
-//              }
-//              completion(.success(true))
-//            }
-//          } catch {
-//            completion(.failure(DatabaseError.requestFailed))
-//          }
-//        } else {
-//          completion(.failure(DatabaseError.invalidInstance))
-//        }
-//      }
-//    }.eraseToAnyPublisher()
-//  }
+
 }
