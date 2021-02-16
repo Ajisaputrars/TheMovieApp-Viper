@@ -3,7 +3,6 @@ osx_image: xcode12.2
 xcode_workspace: TheMovieAppViper.xcworkspace 
 xcode_scheme: TheMovieAppViper
 xcode_destination: platform=iOS Simulator,OS=14.2,name=iPhone 11 Pro
-install: swift package update
 script:
   - swift build
   - swift test
