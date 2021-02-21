@@ -7,7 +7,7 @@ target 'TheMovieAppViper' do
 
   # Pods for TheMovieAppViper
 #  pod 'RealmSwift'
-  pod 'SwiftLint'
+#  pod 'SwiftLint'
   pod 'SDWebImage'
 
   target 'TheMovieAppViperTests' do
